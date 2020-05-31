@@ -10,7 +10,11 @@ import Foundation
 
 struct Constants {
     static let secondsPerDay = 86_400
+    static let minutesPerDay = 1_440
+
     static let daysPerMonth = 30
+
+    static let minutesPerYear = 525_600
     static let monthsPerYear = 12
     static let daysPerYear = 365
 }

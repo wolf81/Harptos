@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "79A8BFF52483C0F400346F44"
-               BuildableName = "Harptos_tvOS.framework"
+               BuildableName = "Harptos.framework"
                BlueprintName = "Harptos tvOS"
                ReferencedContainer = "container:Harptos.xcodeproj">
             </BuildableReference>
@@ -51,7 +51,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "79A8BFF52483C0F400346F44"
-            BuildableName = "Harptos_tvOS.framework"
+            BuildableName = "Harptos.framework"
             BlueprintName = "Harptos tvOS"
             ReferencedContainer = "container:Harptos.xcodeproj">
          </BuildableReference>

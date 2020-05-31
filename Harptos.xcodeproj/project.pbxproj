@@ -7,14 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		795A429B2483D6CB00A13C3F /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A429A2483D6CB00A13C3F /* Month.swift */; };
+		795A429C2483D6CB00A13C3F /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A429A2483D6CB00A13C3F /* Month.swift */; };
+		795A429D2483D6CB00A13C3F /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A429A2483D6CB00A13C3F /* Month.swift */; };
+		795A429F2483DC2700A13C3F /* Epoch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A429E2483DC2700A13C3F /* Epoch.swift */; };
+		795A42A02483DC2700A13C3F /* Epoch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A429E2483DC2700A13C3F /* Epoch.swift */; };
+		795A42A12483DC2700A13C3F /* Epoch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A429E2483DC2700A13C3F /* Epoch.swift */; };
+		795A42A32483E3EE00A13C3F /* Holiday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A42A22483E3EE00A13C3F /* Holiday.swift */; };
+		795A42A42483E3EE00A13C3F /* Holiday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A42A22483E3EE00A13C3F /* Holiday.swift */; };
+		795A42A52483E3EE00A13C3F /* Holiday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A42A22483E3EE00A13C3F /* Holiday.swift */; };
+		795A42AF2483F57D00A13C3F /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A42AE2483F57D00A13C3F /* Calendar.swift */; };
+		795A42B02483F57D00A13C3F /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A42AE2483F57D00A13C3F /* Calendar.swift */; };
+		795A42B12483F57D00A13C3F /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A42AE2483F57D00A13C3F /* Calendar.swift */; };
+		795A42B32483F8CA00A13C3F /* HarptosDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A42B22483F8CA00A13C3F /* HarptosDate.swift */; };
+		795A42B42483F8CA00A13C3F /* HarptosDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A42B22483F8CA00A13C3F /* HarptosDate.swift */; };
+		795A42B52483F8CA00A13C3F /* HarptosDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A42B22483F8CA00A13C3F /* HarptosDate.swift */; };
 		79A8BFD62483BFDA00346F44 /* Harptos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A8BFCD2483BFDA00346F44 /* Harptos.framework */; };
 		79A8BFDB2483BFDA00346F44 /* HarptosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8BFDA2483BFDA00346F44 /* HarptosTests.swift */; };
 		79A8BFDD2483BFDA00346F44 /* Harptos.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A8BFCF2483BFDA00346F44 /* Harptos.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79A8BFED2483C07E00346F44 /* Harptos.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A8BFEB2483C07E00346F44 /* Harptos.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79A8BFFA2483C0F400346F44 /* Harptos.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A8BFF82483C0F400346F44 /* Harptos.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79A8C0002483C15A00346F44 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8BFFF2483C15A00346F44 /* Calendar.swift */; };
-		79A8C0012483C15A00346F44 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8BFFF2483C15A00346F44 /* Calendar.swift */; };
-		79A8C0022483C15A00346F44 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8BFFF2483C15A00346F44 /* Calendar.swift */; };
+		79A8C0002483C15A00346F44 /* HarptosCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8BFFF2483C15A00346F44 /* HarptosCalendar.swift */; };
+		79A8C0012483C15A00346F44 /* HarptosCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8BFFF2483C15A00346F44 /* HarptosCalendar.swift */; };
+		79A8C0022483C15A00346F44 /* HarptosCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8BFFF2483C15A00346F44 /* HarptosCalendar.swift */; };
 		79A8C0042483C8C100346F44 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8C0032483C8C100346F44 /* Constants.swift */; };
 		79A8C0052483C8C100346F44 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8C0032483C8C100346F44 /* Constants.swift */; };
 		79A8C0062483C8C100346F44 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8C0032483C8C100346F44 /* Constants.swift */; };
@@ -31,6 +46,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		795A429A2483D6CB00A13C3F /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
+		795A429E2483DC2700A13C3F /* Epoch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Epoch.swift; sourceTree = "<group>"; };
+		795A42A22483E3EE00A13C3F /* Holiday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Holiday.swift; sourceTree = "<group>"; };
+		795A42AE2483F57D00A13C3F /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		795A42B22483F8CA00A13C3F /* HarptosDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarptosDate.swift; sourceTree = "<group>"; };
 		79A8BF832483BC1100346F44 /* ches.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = ches.js; sourceTree = "<group>"; };
 		79A8BF842483BC1100346F44 /* flamerule.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = flamerule.js; sourceTree = "<group>"; };
 		79A8BF852483BC1100346F44 /* mirtul.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = mirtul.js; sourceTree = "<group>"; };
@@ -63,7 +83,7 @@
 		79A8BFF62483C0F400346F44 /* Harptos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Harptos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79A8BFF82483C0F400346F44 /* Harptos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Harptos.h; sourceTree = "<group>"; };
 		79A8BFF92483C0F400346F44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		79A8BFFF2483C15A00346F44 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		79A8BFFF2483C15A00346F44 /* HarptosCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarptosCalendar.swift; sourceTree = "<group>"; };
 		79A8C0032483C8C100346F44 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,8 +266,13 @@
 		79A8BFFE2483C12900346F44 /* Harptos */ = {
 			isa = PBXGroup;
 			children = (
-				79A8BFFF2483C15A00346F44 /* Calendar.swift */,
+				79A8BFFF2483C15A00346F44 /* HarptosCalendar.swift */,
+				795A42B22483F8CA00A13C3F /* HarptosDate.swift */,
 				79A8C0032483C8C100346F44 /* Constants.swift */,
+				795A429A2483D6CB00A13C3F /* Month.swift */,
+				795A429E2483DC2700A13C3F /* Epoch.swift */,
+				795A42A22483E3EE00A13C3F /* Holiday.swift */,
+				795A42AE2483F57D00A13C3F /* Calendar.swift */,
 			);
 			path = Harptos;
 			sourceTree = "<group>";
@@ -438,8 +463,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79A8C0002483C15A00346F44 /* Calendar.swift in Sources */,
+				795A42B32483F8CA00A13C3F /* HarptosDate.swift in Sources */,
+				79A8C0002483C15A00346F44 /* HarptosCalendar.swift in Sources */,
+				795A42A32483E3EE00A13C3F /* Holiday.swift in Sources */,
+				795A429F2483DC2700A13C3F /* Epoch.swift in Sources */,
 				79A8C0042483C8C100346F44 /* Constants.swift in Sources */,
+				795A429B2483D6CB00A13C3F /* Month.swift in Sources */,
+				795A42AF2483F57D00A13C3F /* Calendar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,8 +485,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79A8C0012483C15A00346F44 /* Calendar.swift in Sources */,
+				795A42B42483F8CA00A13C3F /* HarptosDate.swift in Sources */,
+				79A8C0012483C15A00346F44 /* HarptosCalendar.swift in Sources */,
+				795A42A42483E3EE00A13C3F /* Holiday.swift in Sources */,
+				795A42A02483DC2700A13C3F /* Epoch.swift in Sources */,
 				79A8C0052483C8C100346F44 /* Constants.swift in Sources */,
+				795A429C2483D6CB00A13C3F /* Month.swift in Sources */,
+				795A42B02483F57D00A13C3F /* Calendar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,8 +499,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79A8C0022483C15A00346F44 /* Calendar.swift in Sources */,
+				795A42B52483F8CA00A13C3F /* HarptosDate.swift in Sources */,
+				79A8C0022483C15A00346F44 /* HarptosCalendar.swift in Sources */,
+				795A42A52483E3EE00A13C3F /* Holiday.swift in Sources */,
+				795A42A12483DC2700A13C3F /* Epoch.swift in Sources */,
 				79A8C0062483C8C100346F44 /* Constants.swift in Sources */,
+				795A429D2483D6CB00A13C3F /* Month.swift in Sources */,
+				795A42B12483F57D00A13C3F /* Calendar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,11 +640,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = J6E64C67VU;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -617,6 +657,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = net.wolftrail.Harptos;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -630,11 +671,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = J6E64C67VU;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -647,6 +688,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = net.wolftrail.Harptos;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -659,9 +701,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = J6E64C67VU;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = HarptosTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -671,6 +713,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = net.wolftrail.HarptosTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
 			};
@@ -680,9 +723,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = J6E64C67VU;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = HarptosTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -692,6 +735,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = net.wolftrail.HarptosTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
 			};
@@ -701,10 +745,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = J6E64C67VU;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -716,6 +760,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.wolftrail.Harptos;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -730,10 +775,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = J6E64C67VU;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -745,6 +790,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.wolftrail.Harptos;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
@@ -758,10 +804,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = J6E64C67VU;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -773,6 +819,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.wolftrail.Harptos;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -788,10 +835,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = J6E64C67VU;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -803,6 +850,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.wolftrail.Harptos;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
