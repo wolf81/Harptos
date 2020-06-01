@@ -32,3 +32,9 @@ public struct HarptosDate {
         self.epoch = Calendar.getEpochFor(year: year, month: month, day: day)
     }
 }
+
+extension HarptosDate: CustomStringConvertible {
+    public var description: String {
+        return "\(self.year) \(self.month) \(self.day)"
+    }
+}

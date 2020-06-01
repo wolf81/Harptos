@@ -2334,9 +2334,9 @@ class Calendar {
         let days = Float(epoch / Constants.minutesPerDay)
         let leapDays = Float(epoch / Constants.minutesPerYear / 4)
         let years = floor((days - leapDays) / Float(Constants.daysPerYear))
-        print("[#] days \(days), year: \(years), leapDays: \(leapDays)")
-        
-        print("[# 2] -> \(years * Float(Constants.minutesPerYear))")
+//        print("[#] days \(days), year: \(years), leapDays: \(leapDays)")
+//
+//        print("[# 2] -> \(years * Float(Constants.minutesPerYear))")
         
         return Int(years)
     }
@@ -2346,11 +2346,16 @@ class Calendar {
         let remainder = epoch - (year * Constants.minutesPerYear) - (year / 4) * Constants.minutesPerDay
                 
         var remainingDays = Int(Float(remainder) / Float(Constants.minutesPerDay))
-        
+        var remainingDays2 = Int(ceil(Double(remainder) / Double(Constants.minutesPerDay)))
+        print("r1 \(remainingDays) <-> r2: \(remainingDays2)")
+
+        if epoch < 0 && year % 4 != 0 {
+            remainingDays += 1
+        }
         print("!!! rem: \(remainingDays)")
 
         var monthIdx = 1
-                for i in 1 ... 12 {
+        for i in 1 ... 12 {
             let month = Month(rawValue: i)!
 
             var daysInMonth = month.holiday != nil ? 31 : 30
@@ -2387,10 +2392,10 @@ class Calendar {
                 
         var remainingDays = Int(Float(remainder) / Float(Constants.minutesPerDay))
         
-        print("!!! rem: \(remainingDays)")
+//        print("!!! rem: \(remainingDays)")
 
         var monthIdx = 1
-                for i in 1 ... 12 {
+        for i in 1 ... 12 {
             let month = Month(rawValue: i)!
 
             var daysInMonth = month.holiday != nil ? 31 : 30
@@ -2403,8 +2408,8 @@ class Calendar {
                 break
             }
         }
-        
-        print("rmd: \(remainingDays), mi: \(monthIdx)")
+                
+//        print("rmd: \(remainingDays), mi: \(monthIdx)")
 //        for month in Month.allCases {
 //
 //            if remainingDays < daysInMonth {
@@ -2415,8 +2420,8 @@ class Calendar {
 //            }
 //        }
         
-        print("[!] month: \(monthIdx)")
-        print("[!] days: \(remainingDays)")
+//        print("[!] month: \(monthIdx)")
+//        print("[!] days: \(remainingDays)")
         
         return monthIdx
     }
