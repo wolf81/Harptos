@@ -2329,16 +2329,30 @@ class Calendar {
         ]
         return yearInfo[year]
     }
+
+    static func getYearFor(epoch: Int) -> Int {
+        let days = Float(epoch / Constants.minutesPerDay)
+        let leapDays = Float(epoch / Constants.minutesPerYear / 4)
+        let years = floor((days - leapDays) / Float(Constants.daysPerYear))
+        print("[#] days \(days), year: \(years), leapDays: \(leapDays)")
+        
+        
+        return Int(years)
+    }
     
     // MARK: - Private
-    
+        
     private static func getEpochFor(year: Int) -> Int {
-        return year * Constants.minutesPerYear + (year / 4) * Constants.minutesPerDay
+//        print("base 1: \(year * Constants.minutesPerYear)")
+        
+        let leapDayMinutes = floor(Float(year) / 4) * Float(Constants.minutesPerDay)
+//        print("leap day minutes: \(leapDayMinutes)")
+        return year * Constants.minutesPerYear + Int(leapDayMinutes)
     }
 
     private static func getEpochFor(month: Int, inYear year: Int) -> Int {
         var minutes = 0
-        for i in 1 ... month {
+        for i in 1 ..< month {
             minutes += (Month(rawValue: i)!.holiday != nil
                 ? Constants.minutesPerDay * 31
                 : Constants.minutesPerDay * 30
