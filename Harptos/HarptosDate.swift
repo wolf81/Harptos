@@ -20,24 +20,7 @@ public struct HarptosDate {
     }
     
     var day: Int {
-        let (years, remainderMonths) = self.epoch.quotientAndRemainder(dividingBy: Constants.minutesPerYear)
-        var days = remainderMonths / Constants.minutesPerDay
-        let leapDays = years / 4
-
-        days = (((days - leapDays) + 365) % 365)
-                    
-        for m in Month.allCases {
-            let daysInMonth = m.holiday != nil ? 31 : 30
-            
-            if days <= daysInMonth { break }
-            
-            days -= daysInMonth
-        }
-
-        // if day is 31 of holiday months, day is not decreased
-        // if day is 32 of month 7 in leap year, month is not incremented
-
-        return days
+        return Calendar.getDayFor(epoch: self.epoch)        
     }
     
     public init(epoch: Int) {
