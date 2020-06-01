@@ -2336,8 +2336,49 @@ class Calendar {
         let years = floor((days - leapDays) / Float(Constants.daysPerYear))
         print("[#] days \(days), year: \(years), leapDays: \(leapDays)")
         
+        print("[# 2] -> \(years * Float(Constants.minutesPerYear))")
         
         return Int(years)
+    }
+    
+    static func getMonthFor(epoch: Int) -> Int {
+        let year = getYearFor(epoch: epoch)
+        let remainder = epoch - (year * Constants.minutesPerYear) - (year / 4) * Constants.minutesPerDay
+                
+        var remainingDays = Int(Float(remainder) / Float(Constants.minutesPerDay))
+        
+        print("!!! rem: \(remainingDays)")
+
+        var monthIdx = 1
+                for i in 1 ... 12 {
+            let month = Month(rawValue: i)!
+
+            var daysInMonth = month.holiday != nil ? 31 : 30
+            if month == .flamerule && year % 4 == 0 { daysInMonth += 1 }
+
+            if remainingDays >= daysInMonth {
+                remainingDays -= daysInMonth
+            } else {
+                monthIdx = i
+                break
+            }
+        }
+        
+        print("rmd: \(remainingDays), mi: \(monthIdx)")
+//        for month in Month.allCases {
+//
+//            if remainingDays < daysInMonth {
+//                break
+//            } else {
+//                remainingDays -= daysInMonth
+//                monthIdx += 1
+//            }
+//        }
+        
+        print("[!] month: \(monthIdx)")
+        print("[!] days: \(remainingDays)")
+        
+        return monthIdx
     }
     
     // MARK: - Private
@@ -2345,6 +2386,8 @@ class Calendar {
     private static func getEpochFor(year: Int) -> Int {
 //        print("base 1: \(year * Constants.minutesPerYear)")
         
+//        print("[# 1] -> \(year * Constants.minutesPerYear)")
+
         let leapDayMinutes = floor(Float(year) / 4) * Float(Constants.minutesPerDay)
 //        print("leap day minutes: \(leapDayMinutes)")
         return year * Constants.minutesPerYear + Int(leapDayMinutes)

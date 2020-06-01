@@ -25,7 +25,7 @@ class HarptosTests: XCTestCase {
         let date2 = HarptosDate(epoch: date1.epoch)
         
         XCTAssert(date2.year == year)
-//        XCTAssert(date2.month == month)
+        XCTAssert(date2.month == month)
 //        XCTAssert(date2.day == day)
     }
     
@@ -35,7 +35,7 @@ class HarptosTests: XCTestCase {
         let date2 = HarptosDate(epoch: date1.epoch)
         
         XCTAssert(date2.year == year)
-//        XCTAssert(date2.month == month)
+        XCTAssert(date2.month == month)
 //        XCTAssert(date2.day == day)
     }
 
@@ -45,7 +45,7 @@ class HarptosTests: XCTestCase {
         let date2 = HarptosDate(epoch: date1.epoch)
         
         XCTAssert(date2.year == year)
-//        XCTAssert(date2.month == month)
+        XCTAssert(date2.month == month)
 //        XCTAssert(date2.day == day)
     }
 
@@ -56,7 +56,7 @@ class HarptosTests: XCTestCase {
         let date2 = HarptosDate(epoch: date1.epoch)
         
         XCTAssert(date2.year == year)
-//        XCTAssert(date2.month == month)
+        XCTAssert(date2.month == month)
 //        XCTAssert(date2.day == day)
     }
     
@@ -66,7 +66,7 @@ class HarptosTests: XCTestCase {
         let date2 = HarptosDate(epoch: date1.epoch)
         
         XCTAssert(date2.year == year)
-//        XCTAssert(date2.month == month)
+        XCTAssert(date2.month == month)
 //        XCTAssert(date2.day == day)
     }
 
@@ -76,7 +76,7 @@ class HarptosTests: XCTestCase {
         let date2 = HarptosDate(epoch: date1.epoch)
         
         XCTAssert(date2.year == year)
-//        XCTAssert(date2.month == month)
+        XCTAssert(date2.month == month)
 //        XCTAssert(date2.day == day)
     }
 
@@ -86,7 +86,7 @@ class HarptosTests: XCTestCase {
             let date2 = HarptosDate(epoch: date1.epoch)
             
             XCTAssert(date2.year == year)
-    //        XCTAssert(date2.month == month)
+            XCTAssert(date2.month == month)
     //        XCTAssert(date2.day == day)
         }
 
@@ -97,7 +97,7 @@ class HarptosTests: XCTestCase {
             let date2 = HarptosDate(epoch: date1.epoch)
             
             XCTAssert(date2.year == year)
-    //        XCTAssert(date2.month == month)
+            XCTAssert(date2.month == month)
     //        XCTAssert(date2.day == day)
         }
 
@@ -107,7 +107,7 @@ class HarptosTests: XCTestCase {
         let date2 = HarptosDate(epoch: date1.epoch)
         
         XCTAssert(date2.year == year)
-//        XCTAssert(date2.month == month)
+        XCTAssert(date2.month == month)
 //        XCTAssert(date2.day == day)
     }
 
@@ -117,7 +117,7 @@ class HarptosTests: XCTestCase {
         let date2 = HarptosDate(epoch: date1.epoch)
         
         XCTAssert(date2.year == year)
-//        XCTAssert(date2.month == month)
+        XCTAssert(date2.month == month)
 //        XCTAssert(date2.day == day)
     }
 
@@ -127,7 +127,7 @@ class HarptosTests: XCTestCase {
             let date2 = HarptosDate(epoch: date1.epoch)
             
             XCTAssert(date2.year == year)
-    //        XCTAssert(date2.month == month)
+            XCTAssert(date2.month == month)
     //        XCTAssert(date2.day == day)
         }
 
@@ -137,7 +137,7 @@ class HarptosTests: XCTestCase {
         let date2 = HarptosDate(epoch: date1.epoch)
         
         XCTAssert(date2.year == year)
-//        XCTAssert(date2.month == month)
+        XCTAssert(date2.month == month)
 //        XCTAssert(date2.day == day)
     }
 
