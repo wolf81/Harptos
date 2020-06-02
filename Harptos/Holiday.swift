@@ -8,12 +8,17 @@
 
 import Foundation
 
-enum Holiday: Int {
+public class HarptosHoliday {
+    
+}
+
+public enum Holiday: Int {
     case midwinter
     case greengrass
     case midsummer
     case highharvestide
     case moonfeast
+    case shieldmeet
     
     var name: String {
         switch self {

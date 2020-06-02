@@ -8,31 +8,54 @@
 
 import Foundation
 
+enum HarptosYearSegment {
+    case month(Month)
+    case holiday(Holiday)
+}
+
 public class HarptosDate {
     let epoch: Int
 
     private lazy var components: HarptosDateComponents = {
-        return Calendar.getDateComponentsFor(epoch: self.epoch)
+        let c = Calendar.getDateComponentsFor(epoch: self.epoch)
+        print("\(c.year), \(c.month), \(c.day)")
+        return c
     }()
     
     var year: Int { return self.components.year }
-    
-    var month: Int { return self.components.month.index }
+
+    var month: Int? {
+        let month = self.components.month
+        if month.isHoliday { return nil }
+        return self.components.month.index
+    }
     
     var day: Int { return self.components.day }
+
+    var holiday: Holiday? { return self.components.month.holiday }
     
     public init(epoch: Int) {
         self.epoch = epoch
     }
     
+    public init(year: Int, holiday: Holiday) {
+        let monthIdx = Month.getInternalIndex(for: holiday)
+        self.epoch = Calendar.getEpochFor(year: year, month: monthIdx, day: 1)
+    }
+    
     public init(year: Int, month: Int, day: Int) {
-        print("\(year), \(month), \(day)")
-        self.epoch = Calendar.getEpochFor(year: year, month: month, day: day)
+        assert(day <= 30)
+        let monthIdx = Month.getInternalIndex(for: month)
+        self.epoch = Calendar.getEpochFor(year: year, month: monthIdx, day: day)
     }
 }
 
 extension HarptosDate: CustomStringConvertible {
     public var description: String {
-        return "\(self.year) \(self.month) \(self.day)"
+        if let holiday = self.holiday {
+            return "\(self.year) \(holiday.name)"
+        } else {
+            return "\(self.year) \(self.month!) \(self.day)"
+        }
     }
 }

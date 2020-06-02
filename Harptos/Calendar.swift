@@ -2333,21 +2333,36 @@ class Calendar {
         // leap year, but it's required to get the correct date - figure this out
         if epoch < 0 && isLeapYear(year) == false { day += 1 }
 
-        var month: Month!
-        for i in 1 ... 12 {
-            month = Month(rawValue: i)!
+        var theMonth: Month!
+        
+        for month in Month.allCases {
+            theMonth = month
 
-            var daysInMonth = month.holiday != nil ? 31 : 30
+            var daysInMonth = month.isHoliday ? 1 : 30
             if isLeapYear(year) && month == .flamerule { daysInMonth += 1 }
-
-            if day >= daysInMonth {
+            
+            if day > daysInMonth {
                 day -= daysInMonth
             } else {
+                print("month: \(month.name)")
                 break
             }
         }
         
-        return HarptosDateComponents(year: year, month: month, day: day)
+//        for i in 1 ... 12 {
+//            month = Month(rawValue: i)!
+//
+//            var daysInMonth = month.holiday != nil ? 31 : 30
+//            if isLeapYear(year) && month == .flamerule { daysInMonth += 1 }
+//
+//            if day >= daysInMonth {
+//                day -= daysInMonth
+//            } else {
+//                break
+//            }
+//        }
+        
+        return HarptosDateComponents(year: year, month: theMonth, day: day)
     }
     
     // MARK: - Private
@@ -2360,8 +2375,8 @@ class Calendar {
     private static func getEpochFor(month: Int, inYear year: Int) -> Int {
         var minutes = 0
         for i in 1 ..< month {
-            minutes += (Month(rawValue: i)!.holiday != nil
-                ? Constants.minutesPerDay * 31
+            minutes += (Month(rawValue: i)!.isHoliday
+                ? Constants.minutesPerDay * 1
                 : Constants.minutesPerDay * 30
             )
             
