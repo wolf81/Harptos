@@ -9,24 +9,12 @@
 import Foundation
 
 public class HarptosDate: HarptosInstant {
-    public let epoch: Int
-
-    private lazy var components: HarptosDateComponents = {
-        let c = Calendar.getDateComponentsFor(epoch: self.epoch)
-        print("\(c.year), \(c.segment), \(c.day)")
-        return c
-    }()
+    public var month: Int { self.components.segment.month }
     
-    public var year: Int { return self.components.year }
-
-    var month: Int { return self.components.segment.month }
-    
-    var day: Int { return self.components.day }
-    
-    init(epoch: Int) {
-        self.epoch = epoch
-    }        
+    public var day: Int { self.components.day }    
 }
+
+// MARK: - CustomStringConvertible
 
 extension HarptosDate: CustomStringConvertible {
     public var description: String {

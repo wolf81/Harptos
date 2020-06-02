@@ -8,23 +8,7 @@
 
 import Foundation
 
-public class HarptosCalendar {    
-    public static func getDateFor(epoch: Int) -> HarptosDate {
-        // TODO:
-        // day 31 of several months are in fact a holiday
-        // day 32 of 7th month is holiday in leap year
-        return HarptosDate(epoch: epoch)
-    }
-
-    public static func getNameFor(year: Int) -> String? {
-        return Calendar.getNameFor(year: year)
-    }
-    
-    public static func getNamesFor(month: Int) -> [String] {
-        let month = HarptosYearSegment(rawValue: month)!
-        return [month.name] + month.alternateNames
-    }
-    
+public class HarptosCalendar {
     public static func getDateFor(year: Int, month: Int, day: Int) -> HarptosDate {
         assert((1 ... 12).contains(month))
         assert((1 ... 30).contains(day))
@@ -40,7 +24,7 @@ public class HarptosCalendar {
         return HarptosFestival(epoch: epoch)
     }
     
-    public static func getInstant(epoch: Int) -> HarptosInstant {
+    public static func getInstant(epoch: Int) -> HarptosInstantProtocol {
         let components = Calendar.getDateComponentsFor(epoch: epoch)
         if components.segment.isFestival {
             return HarptosFestival(epoch: epoch)
@@ -50,16 +34,20 @@ public class HarptosCalendar {
     }
 }
 
+// MARK: - Retrieval of human-readable names for years, months & festivals
 
-/*
- a map of: [month][week][[day]
-months: _map(months, month => ({
-  ...month,
-  weeks: _times(3, week => ({
-    id: week,
-    days: _times(10, day => ({
-      id: day+(week*10)+1,
-    })),
-  })),
-})),
-*/
+extension HarptosCalendar {
+    public static func getNameFor(year: Int) -> String? {
+        return Calendar.getNameFor(year: year)
+    }
+    
+    public static func getNamesFor(month: Int) -> [String] {
+        let segment = HarptosYearSegment(month: month)
+        return [segment.name] + segment.alternateNames
+    }
+    
+    public static func getNameFor(festival: Festival) -> String {
+        let segment = HarptosYearSegment(festival: festival)
+        return segment.name
+    }
+}

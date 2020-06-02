@@ -114,4 +114,14 @@ enum HarptosYearSegment: Int, CaseIterable {
         default: return []
         }
     }
+    
+    init(month: Int) {
+        let segmentIdx = HarptosYearSegment.getSegmentIndexFor(month: month)
+        self.init(rawValue: segmentIdx)!
+    }
+    
+    init(festival: Festival) {
+        let segmentIdx = HarptosYearSegment.getSegmentIndexFor(festival: festival)
+        self.init(rawValue: segmentIdx)!
+    }
 }

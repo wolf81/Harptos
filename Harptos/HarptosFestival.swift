@@ -9,26 +9,10 @@
 import Foundation
 
 public class HarptosFestival: HarptosInstant {
-    public let epoch: Int
-    
-    public var year: Int {
-        return self.components.year
-    }
-    
-    private lazy var components: HarptosDateComponents = {
-        let c = Calendar.getDateComponentsFor(epoch: self.epoch)
-        print("\(c.year), \(c.segment), \(c.day)")
-        return c
-    }()
-    
-    var festival: Festival {
-        return self.components.segment.festival
-    }
-        
-    init(epoch: Int) {
-        self.epoch = epoch
-    }
+    public var festival: Festival { self.components.segment.festival }                
 }
+
+// MARK: - CustomStringConvertible
 
 extension HarptosFestival: CustomStringConvertible {
     public var description: String {
