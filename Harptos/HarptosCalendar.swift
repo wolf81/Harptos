@@ -21,8 +21,25 @@ public class HarptosCalendar {
     }
     
     public static func getNamesFor(month: Int) -> [String] {
-        let month = Month(rawValue: month)!
+        let month = HarptosYearSegment(rawValue: month)!
         return [month.name] + month.alternateNames
+    }
+    
+    public static func getDateFor(year: Int, month: Int, day: Int) -> HarptosDate {
+        return HarptosDate(year: year, month: month, day: day)
+    }
+    
+    public static func getFestivalFor(year: Int, festival: Festival) -> HarptosFestival {
+        return HarptosFestival(year: 1, festival: festival)
+    }
+    
+    public static func getInstant(epoch: Int) -> HarptosInstant {
+        let components = Calendar.getDateComponentsFor(epoch: epoch)
+        if components.segment.isFestival {
+            return HarptosFestival(epoch: epoch)
+        } else {
+            return HarptosDate(epoch: epoch)
+        }
     }
 }
 

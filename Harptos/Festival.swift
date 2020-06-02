@@ -8,11 +8,7 @@
 
 import Foundation
 
-public class HarptosHoliday {
-    
-}
-
-public enum Holiday: Int {
+public enum Festival: Int {
     case midwinter
     case greengrass
     case midsummer

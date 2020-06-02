@@ -21,13 +21,9 @@ class HarptosTests: XCTestCase {
 
     func testMidwinter() {
         let year = 1200
-        let holiday = Holiday.midwinter
-        let date1 = HarptosDate(year: year, holiday: holiday)
-        let date2 = HarptosDate(epoch: date1.epoch)
+        let festival = HarptosCalendar.getFestivalFor(year: 1200, festival: .midwinter)
+
         
-        XCTAssert(date2.year == year)
-        XCTAssert(date2.holiday != nil)
-        XCTAssert(date2.holiday! == holiday)
     }
 
     func testNegativeDateInLeapYear4() {

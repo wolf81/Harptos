@@ -8,31 +8,35 @@
 
 import Foundation
 
-enum Month: Int, CaseIterable {
+enum HarptosYearSegment: Int, CaseIterable {
     case hammer = 1
-    case midwinter // holiday
+    case midwinter // festival
     case alturiak
     case ches
     case tarsakh
-    case greengrass // holiday
+    case greengrass // festival
     case mirtul
     case kythorn
     case flamerule
-    case midsummer // holiday
+    case midsummer // festival
     case eleasis
     case eleint
-    case highharvestide // holiday
+    case highharvestide // festival
     case marpenoth
     case uktar
-    case moonfeast // holiday
+    case moonfeast // festival
     case nightal
     
-    var isHoliday: Bool {
+    var isFestival: Bool {
         return [.midwinter, .greengrass, .midsummer, .highharvestide, .moonfeast].contains(self)
     }
+    
+    var isMonth: Bool {
+        return self.isFestival == false
+    }
 
-    static func getInternalIndex(for holiday: Holiday) -> Int {
-        switch holiday {
+    static func getSegmentIndex(for festival: Festival) -> Int {
+        switch festival {
         case .midwinter: return 2
         case .greengrass: return 6
         case .midsummer: return 10
@@ -42,8 +46,8 @@ enum Month: Int, CaseIterable {
         }
     }
     
-    static func getInternalIndex(for index: Int) -> Int {
-        switch index {
+    static func getSegmentIndex(for month: Int) -> Int {
+        switch month {
         case 1: return 1
         case 2: return 3
         case 3: return 4
@@ -60,18 +64,18 @@ enum Month: Int, CaseIterable {
         }
     }
     
-    var holiday: Holiday? {
-        switch self {
-        case .midwinter: return Holiday.midwinter
-        case .midsummer: return Holiday.midsummer
-        case .greengrass: return Holiday.greengrass
-        case .highharvestide: return Holiday.highharvestide
-        case .moonfeast: return Holiday.moonfeast
-        default: return nil
+    public var festival: Festival {
+        switch self.rawValue {
+        case 2: return .midwinter
+        case 6: return .greengrass
+        case 10: return .midsummer
+        case 13: return .highharvestide
+        case 16: return .moonfeast
+        default: fatalError()
         }
     }
-    
-    public var index: Int {
+        
+    public var month: Int {
         switch self.rawValue {
         case 1: return 1
         case 3: return 2

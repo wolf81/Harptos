@@ -9,10 +9,10 @@
 import Foundation
 
 class Calendar {
-    static func getEpochFor(year: Int, month: Int, day: Int) -> Int {
+    static func getEpochFor(year: Int, segment: Int, day: Int) -> Int {
         return (
             getEpochFor(year: year) +
-            getEpochFor(month: month, inYear: year) +
+            getEpochFor(segment: segment, inYear: year) +
             getEpochFor(day: day)
         )
     }
@@ -2333,12 +2333,12 @@ class Calendar {
         // leap year, but it's required to get the correct date - figure this out
         if epoch < 0 && isLeapYear(year) == false { day += 1 }
 
-        var theMonth: Month!
+        var theMonth: HarptosYearSegment!
         
-        for month in Month.allCases {
+        for month in HarptosYearSegment.allCases {
             theMonth = month
 
-            var daysInMonth = month.isHoliday ? 1 : 30
+            var daysInMonth = month.isFestival ? 1 : 30
             if isLeapYear(year) && month == .flamerule { daysInMonth += 1 }
             
             if day > daysInMonth {
@@ -2349,20 +2349,7 @@ class Calendar {
             }
         }
         
-//        for i in 1 ... 12 {
-//            month = Month(rawValue: i)!
-//
-//            var daysInMonth = month.holiday != nil ? 31 : 30
-//            if isLeapYear(year) && month == .flamerule { daysInMonth += 1 }
-//
-//            if day >= daysInMonth {
-//                day -= daysInMonth
-//            } else {
-//                break
-//            }
-//        }
-        
-        return HarptosDateComponents(year: year, month: theMonth, day: day)
+        return HarptosDateComponents(year: year, segment: theMonth, day: day)
     }
     
     // MARK: - Private
@@ -2372,15 +2359,15 @@ class Calendar {
         return (year * Constants.minutesPerYear) + Int(leapDayMinutes)
     }
 
-    private static func getEpochFor(month: Int, inYear year: Int) -> Int {
+    private static func getEpochFor(segment: Int, inYear year: Int) -> Int {
         var minutes = 0
-        for i in 1 ..< month {
-            minutes += (Month(rawValue: i)!.isHoliday
+        for i in 1 ..< segment {
+            minutes += (HarptosYearSegment(rawValue: i)!.isFestival
                 ? Constants.minutesPerDay * 1
                 : Constants.minutesPerDay * 30
             )
             
-            if (i == Month.flamerule.rawValue) && isLeapYear(year) {
+            if (i == HarptosYearSegment.flamerule.rawValue) && isLeapYear(year) {
                 minutes += Constants.minutesPerDay
             }
         }

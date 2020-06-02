@@ -10,6 +10,6 @@ import Foundation
 
 struct HarptosDateComponents {
     var year: Int
-    var month: Month
+    var segment: HarptosYearSegment
     var day: Int
 }
