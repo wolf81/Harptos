@@ -16,17 +16,7 @@ class Calendar {
             getEpochFor(day: day)
         )
     }
-
-    static func getDateComponentsFor(epoch: Int) -> (Int, Int, Int) {
-        var year = epoch / Constants.minutesPerYear
-        let leapYearCount = year / 4
-        year = (epoch - (leapYearCount * Constants.minutesPerDay)) / Constants.minutesPerYear
         
-        print("y: \(year), l: \(leapYearCount)")
-//        print("n: \(n), leap: \(leapYearCount)")
-        return (0, 1, 1)
-    }
-    
     static func getNameFor(year: Int) -> String? {
         let yearInfo: [Int: String] = [
          -700: "The Year of Twelve Gods",
@@ -2330,112 +2320,41 @@ class Calendar {
         return yearInfo[year]
     }
 
-    static func getYearFor(epoch: Int) -> Int {
+    static func getDateComponentsFor(epoch: Int) -> HarptosDateComponents {
         let days = Float(epoch / Constants.minutesPerDay)
         let leapDays = Float(epoch / Constants.minutesPerYear / 4)
-        let years = floor((days - leapDays) / Float(Constants.daysPerYear))
-//        print("[#] days \(days), year: \(years), leapDays: \(leapDays)")
-//
-//        print("[# 2] -> \(years * Float(Constants.minutesPerYear))")
-        
-        return Int(years)
-    }
+        let year = Int(floor((days - leapDays) / Float(Constants.daysPerYear)))
     
-    static func getDayFor(epoch: Int) -> Int {
-        let year = getYearFor(epoch: epoch)
-        let remainder = epoch - (year * Constants.minutesPerYear) - (year / 4) * Constants.minutesPerDay
-                
-        var remainingDays = Int(Float(remainder) / Float(Constants.minutesPerDay))
-        var remainingDays2 = Int(ceil(Double(remainder) / Double(Constants.minutesPerDay)))
-        print("r1 \(remainingDays) <-> r2: \(remainingDays2)")
+        let remainingYearMinutes = epoch - (year * Constants.minutesPerYear) - (year / 4) * Constants.minutesPerDay
+        var day = Int(Float(remainingYearMinutes) / Float(Constants.minutesPerDay))
 
-        if epoch < 0 && year % 4 != 0 {
-            remainingDays += 1
-        }
-        print("!!! rem: \(remainingDays)")
+        // TODO:
+        // I'm not sure why I need to add 1 day in case of a negative epoch when we're not in a
+        // leap year, but it's required to get the correct date - figure this out
+        if epoch < 0 && isLeapYear(year) == false { day += 1 }
 
-        var monthIdx = 1
+        var month: Month!
         for i in 1 ... 12 {
-            let month = Month(rawValue: i)!
+            month = Month(rawValue: i)!
 
             var daysInMonth = month.holiday != nil ? 31 : 30
-            if month == .flamerule && year % 4 == 0 { daysInMonth += 1 }
+            if isLeapYear(year) && month == .flamerule { daysInMonth += 1 }
 
-            if remainingDays >= daysInMonth {
-                remainingDays -= daysInMonth
+            if day >= daysInMonth {
+                day -= daysInMonth
             } else {
-                monthIdx = i
                 break
             }
         }
         
-        print("rmd: \(remainingDays), mi: \(monthIdx)")
-//        for month in Month.allCases {
-//
-//            if remainingDays < daysInMonth {
-//                break
-//            } else {
-//                remainingDays -= daysInMonth
-//                monthIdx += 1
-//            }
-//        }
-        
-        print("[!] month: \(monthIdx)")
-        print("[!] days: \(remainingDays)")
-        
-        return remainingDays
-    }
-    
-    static func getMonthFor(epoch: Int) -> Int {
-        let year = getYearFor(epoch: epoch)
-        let remainder = epoch - (year * Constants.minutesPerYear) - (year / 4) * Constants.minutesPerDay
-                
-        var remainingDays = Int(Float(remainder) / Float(Constants.minutesPerDay))
-        
-//        print("!!! rem: \(remainingDays)")
-
-        var monthIdx = 1
-        for i in 1 ... 12 {
-            let month = Month(rawValue: i)!
-
-            var daysInMonth = month.holiday != nil ? 31 : 30
-            if month == .flamerule && year % 4 == 0 { daysInMonth += 1 }
-
-            if remainingDays >= daysInMonth {
-                remainingDays -= daysInMonth
-            } else {
-                monthIdx = i
-                break
-            }
-        }
-                
-//        print("rmd: \(remainingDays), mi: \(monthIdx)")
-//        for month in Month.allCases {
-//
-//            if remainingDays < daysInMonth {
-//                break
-//            } else {
-//                remainingDays -= daysInMonth
-//                monthIdx += 1
-//            }
-//        }
-        
-//        print("[!] month: \(monthIdx)")
-//        print("[!] days: \(remainingDays)")
-        
-        return monthIdx
+        return HarptosDateComponents(year: year, month: month, day: day)
     }
     
     // MARK: - Private
         
     private static func getEpochFor(year: Int) -> Int {
-//        print("base 1: \(year * Constants.minutesPerYear)")
-        
-//        print("[# 1] -> \(year * Constants.minutesPerYear)")
-
-        let leapDayMinutes = floor(Float(year) / 4) * Float(Constants.minutesPerDay)
-//        print("leap day minutes: \(leapDayMinutes)")
-        return year * Constants.minutesPerYear + Int(leapDayMinutes)
+        let leapDayMinutes = Float(year) / 4 * Float(Constants.minutesPerDay)
+        return (year * Constants.minutesPerYear) + Int(leapDayMinutes)
     }
 
     private static func getEpochFor(month: Int, inYear year: Int) -> Int {
@@ -2446,7 +2365,7 @@ class Calendar {
                 : Constants.minutesPerDay * 30
             )
             
-            if (i == 7) && (year % 4 == 0) {
+            if (i == Month.flamerule.rawValue) && isLeapYear(year) {
                 minutes += Constants.minutesPerDay
             }
         }
@@ -2455,5 +2374,9 @@ class Calendar {
 
     private static func getEpochFor(day: Int) -> Int {
         return day * Constants.minutesPerDay
+    }
+    
+    private static func isLeapYear(_ year: Int) -> Bool {
+        return year % 4 == 0
     }
 }

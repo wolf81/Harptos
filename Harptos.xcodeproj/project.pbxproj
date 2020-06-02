@@ -33,6 +33,9 @@
 		79A8C0042483C8C100346F44 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8C0032483C8C100346F44 /* Constants.swift */; };
 		79A8C0052483C8C100346F44 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8C0032483C8C100346F44 /* Constants.swift */; };
 		79A8C0062483C8C100346F44 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8C0032483C8C100346F44 /* Constants.swift */; };
+		79FDFF7B2485FD4300D09FEA /* HarptosDateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDFF7A2485FD4300D09FEA /* HarptosDateComponents.swift */; };
+		79FDFF7C2485FD4300D09FEA /* HarptosDateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDFF7A2485FD4300D09FEA /* HarptosDateComponents.swift */; };
+		79FDFF7D2485FD4300D09FEA /* HarptosDateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDFF7A2485FD4300D09FEA /* HarptosDateComponents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +88,7 @@
 		79A8BFF92483C0F400346F44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79A8BFFF2483C15A00346F44 /* HarptosCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarptosCalendar.swift; sourceTree = "<group>"; };
 		79A8C0032483C8C100346F44 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		79FDFF7A2485FD4300D09FEA /* HarptosDateComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarptosDateComponents.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +277,7 @@
 				795A429E2483DC2700A13C3F /* Epoch.swift */,
 				795A42A22483E3EE00A13C3F /* Holiday.swift */,
 				795A42AE2483F57D00A13C3F /* Calendar.swift */,
+				79FDFF7A2485FD4300D09FEA /* HarptosDateComponents.swift */,
 			);
 			path = Harptos;
 			sourceTree = "<group>";
@@ -466,6 +471,7 @@
 				795A42B32483F8CA00A13C3F /* HarptosDate.swift in Sources */,
 				79A8C0002483C15A00346F44 /* HarptosCalendar.swift in Sources */,
 				795A42A32483E3EE00A13C3F /* Holiday.swift in Sources */,
+				79FDFF7B2485FD4300D09FEA /* HarptosDateComponents.swift in Sources */,
 				795A429F2483DC2700A13C3F /* Epoch.swift in Sources */,
 				79A8C0042483C8C100346F44 /* Constants.swift in Sources */,
 				795A429B2483D6CB00A13C3F /* Month.swift in Sources */,
@@ -488,6 +494,7 @@
 				795A42B42483F8CA00A13C3F /* HarptosDate.swift in Sources */,
 				79A8C0012483C15A00346F44 /* HarptosCalendar.swift in Sources */,
 				795A42A42483E3EE00A13C3F /* Holiday.swift in Sources */,
+				79FDFF7C2485FD4300D09FEA /* HarptosDateComponents.swift in Sources */,
 				795A42A02483DC2700A13C3F /* Epoch.swift in Sources */,
 				79A8C0052483C8C100346F44 /* Constants.swift in Sources */,
 				795A429C2483D6CB00A13C3F /* Month.swift in Sources */,
@@ -502,6 +509,7 @@
 				795A42B52483F8CA00A13C3F /* HarptosDate.swift in Sources */,
 				79A8C0022483C15A00346F44 /* HarptosCalendar.swift in Sources */,
 				795A42A52483E3EE00A13C3F /* Holiday.swift in Sources */,
+				79FDFF7D2485FD4300D09FEA /* HarptosDateComponents.swift in Sources */,
 				795A42A12483DC2700A13C3F /* Epoch.swift in Sources */,
 				79A8C0062483C8C100346F44 /* Constants.swift in Sources */,
 				795A429D2483D6CB00A13C3F /* Month.swift in Sources */,

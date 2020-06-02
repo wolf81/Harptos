@@ -8,20 +8,18 @@
 
 import Foundation
 
-public struct HarptosDate {
+public class HarptosDate {
     let epoch: Int
 
-    var year: Int {
-        return Calendar.getYearFor(epoch: self.epoch)
-    }
+    private lazy var components: HarptosDateComponents = {
+        return Calendar.getDateComponentsFor(epoch: self.epoch)
+    }()
     
-    var month: Int {
-        return Calendar.getMonthFor(epoch: self.epoch)
-    }
+    var year: Int { return self.components.year }
     
-    var day: Int {
-        return Calendar.getDayFor(epoch: self.epoch)        
-    }
+    var month: Int { return self.components.month.index }
+    
+    var day: Int { return self.components.day }
     
     public init(epoch: Int) {
         self.epoch = epoch

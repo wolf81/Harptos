@@ -13,9 +13,7 @@ public class HarptosCalendar {
         // TODO:
         // day 31 of several months are in fact a holiday
         // day 32 of 7th month is holiday in leap year
-        
-        let (year, month, day) = Calendar.getDateComponentsFor(epoch: epoch)
-        return HarptosDate(year: year, month: month, day: day)
+        return HarptosDate(epoch: epoch)
     }
 
     public static func getNameFor(year: Int) -> String? {

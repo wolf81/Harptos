@@ -33,11 +33,15 @@ enum Month: Int, CaseIterable {
         }
     }
     
-    var name: String {
+    public var index: Int {
+        return self.rawValue
+    }
+    
+    public var name: String {
         return String(describing: self).capitalized
     }
     
-    var alternateNames: [String] {
+    public var alternateNames: [String] {
         switch self {
         case .hammer: return ["Deepwinter"]
         case .alturiak: return ["The Claw of Winter", "The Claws of the Cold"]
