@@ -20,16 +20,17 @@ class HarptosTests: XCTestCase {
     }
 
     func testMidwinter() {
-        let year = 1200
-        let festival = HarptosCalendar.getFestivalFor(year: 1200, festival: .midwinter)
-
+        let festival1 = HarptosCalendar.getFestivalFor(year: 1200, festival: .midwinter)
+        let festival2 = HarptosCalendar.getInstant(epoch: festival1.epoch) as! HarptosFestival
         
+        XCTAssert(festival1.festival == festival2.festival)
+        XCTAssert(festival1.year == festival2.year)
     }
 
     func testNegativeDateInLeapYear4() {
         let year = -48, month = 5, day = 12
-        let date1 = HarptosDate(year: year, month: month, day: day)
-        let date2 = HarptosDate(epoch: date1.epoch)
+        let date1 = HarptosCalendar.getDateFor(year: year, month: month, day: day)
+        let date2 = HarptosCalendar.getInstant(epoch: date1.epoch) as! HarptosDate
         
         XCTAssert(date2.year == year)
         XCTAssert(date2.month == month)
@@ -38,9 +39,9 @@ class HarptosTests: XCTestCase {
 
     func testNegativeDateInLeapYear() {
         let year = -48, month = 9, day = 12
-        let date1 = HarptosDate(year: year, month: month, day: day)
-        let date2 = HarptosDate(epoch: date1.epoch)
-        
+        let date1 = HarptosCalendar.getDateFor(year: year, month: month, day: day)
+        let date2 = HarptosCalendar.getInstant(epoch: date1.epoch) as! HarptosDate
+
         XCTAssert(date2.year == year)
         XCTAssert(date2.month == month)
         XCTAssert(date2.day == day)
@@ -48,20 +49,19 @@ class HarptosTests: XCTestCase {
 
     func testNegativeDateBeforeLeapYear() {
         let year = -2, month = 11, day = 1
-        let date1 = HarptosDate(year: year, month: month, day: day)
-        let date2 = HarptosDate(epoch: date1.epoch)
-        
+        let date1 = HarptosCalendar.getDateFor(year: year, month: month, day: day)
+        let date2 = HarptosCalendar.getInstant(epoch: date1.epoch) as! HarptosDate
+
         XCTAssert(date2.year == year)
         XCTAssert(date2.month == month)
         XCTAssert(date2.day == day)
     }
-
     
     func testNegativeDateAfterLeapYear() {
         let year = -50, month = 3, day = 30
-        let date1 = HarptosDate(year: year, month: month, day: day)
-        let date2 = HarptosDate(epoch: date1.epoch)
-        
+        let date1 = HarptosCalendar.getDateFor(year: year, month: month, day: day)
+        let date2 = HarptosCalendar.getInstant(epoch: date1.epoch) as! HarptosDate
+
         XCTAssert(date2.year == year)
         XCTAssert(date2.month == month)
         XCTAssert(date2.day == day)
@@ -69,9 +69,9 @@ class HarptosTests: XCTestCase {
     
     func testPositiveDateBeforeLeapYear() {
         let year = 1, month = 11, day = 15
-        let date1 = HarptosDate(year: year, month: month, day: day)
-        let date2 = HarptosDate(epoch: date1.epoch)
-        
+        let date1 = HarptosCalendar.getDateFor(year: year, month: month, day: day)
+        let date2 = HarptosCalendar.getInstant(epoch: date1.epoch) as! HarptosDate
+
         XCTAssert(date2.year == year)
         XCTAssert(date2.month == month)
         XCTAssert(date2.day == day)
@@ -79,9 +79,9 @@ class HarptosTests: XCTestCase {
 
     func testPositiveDateAfterLeapYear6() {
         let year = 1454, month = 1, day = 30
-        let date1 = HarptosDate(year: year, month: month, day: day)
-        let date2 = HarptosDate(epoch: date1.epoch)
-        
+        let date1 = HarptosCalendar.getDateFor(year: year, month: month, day: day)
+        let date2 = HarptosCalendar.getInstant(epoch: date1.epoch) as! HarptosDate
+
         XCTAssert(date2.year == year)
         XCTAssert(date2.month == month)
         XCTAssert(date2.day == day)
@@ -89,9 +89,9 @@ class HarptosTests: XCTestCase {
 
     func testPositiveDateAfterLeapYear2() {
         let year = 1454, month = 4, day = 15
-        let date1 = HarptosDate(year: year, month: month, day: day)
-        let date2 = HarptosDate(epoch: date1.epoch)
-        
+        let date1 = HarptosCalendar.getDateFor(year: year, month: month, day: day)
+        let date2 = HarptosCalendar.getInstant(epoch: date1.epoch) as! HarptosDate
+
         XCTAssert(date2.year == year)
         XCTAssert(date2.month == month)
         XCTAssert(date2.day == day)
@@ -99,9 +99,9 @@ class HarptosTests: XCTestCase {
 
     func testPositiveDateAfterLeapYear4() {
         let year = 1600, month = 9, day = 21
-        let date1 = HarptosDate(year: year, month: month, day: day)
-        let date2 = HarptosDate(epoch: date1.epoch)
-        
+        let date1 = HarptosCalendar.getDateFor(year: year, month: month, day: day)
+        let date2 = HarptosCalendar.getInstant(epoch: date1.epoch) as! HarptosDate
+
         XCTAssert(date2.year == year)
         XCTAssert(date2.month == month)
         XCTAssert(date2.day == day)
@@ -109,9 +109,9 @@ class HarptosTests: XCTestCase {
     
     func testPositiveDateAfterLeapYear5() {
         let year = 1733, month = 12, day = 19
-        let date1 = HarptosDate(year: year, month: month, day: day)
-        let date2 = HarptosDate(epoch: date1.epoch)
-        
+        let date1 = HarptosCalendar.getDateFor(year: year, month: month, day: day)
+        let date2 = HarptosCalendar.getInstant(epoch: date1.epoch) as! HarptosDate
+
         XCTAssert(date2.year == year)
         XCTAssert(date2.month == month)
         XCTAssert(date2.day == day)
@@ -119,9 +119,9 @@ class HarptosTests: XCTestCase {
 
     func testPositiveDateAfterLeapYear3() {
         let year = 1454, month = 12, day = 15
-        let date1 = HarptosDate(year: year, month: month, day: day)
-        let date2 = HarptosDate(epoch: date1.epoch)
-        
+        let date1 = HarptosCalendar.getDateFor(year: year, month: month, day: day)
+        let date2 = HarptosCalendar.getInstant(epoch: date1.epoch) as! HarptosDate
+
         XCTAssert(date2.year == year)
         XCTAssert(date2.month == month)
         XCTAssert(date2.day == day)
@@ -129,9 +129,9 @@ class HarptosTests: XCTestCase {
 
     func testPositiveDateAfterLeapYear() {
         let year = 6, month = 12, day = 15
-        let date1 = HarptosDate(year: year, month: month, day: day)
-        let date2 = HarptosDate(epoch: date1.epoch)
-        
+        let date1 = HarptosCalendar.getDateFor(year: year, month: month, day: day)
+        let date2 = HarptosCalendar.getInstant(epoch: date1.epoch) as! HarptosDate
+
         XCTAssert(date2.year == year)
         XCTAssert(date2.month == month)
         XCTAssert(date2.day == day)
@@ -139,9 +139,9 @@ class HarptosTests: XCTestCase {
 
     func testPositiveDateAfterLeapYear7() {
         let year = -1434, month = 1, day = 2
-        let date1 = HarptosDate(year: year, month: month, day: day)
-        let date2 = HarptosDate(epoch: date1.epoch)
-        
+        let date1 = HarptosCalendar.getDateFor(year: year, month: month, day: day)
+        let date2 = HarptosCalendar.getInstant(epoch: date1.epoch) as! HarptosDate
+
         XCTAssert(date2.year == year)
         XCTAssert(date2.month == month)
         XCTAssert(date2.day == day)
@@ -149,9 +149,9 @@ class HarptosTests: XCTestCase {
 
     func testPositiveDateInLeapYear() {
         let year = 4, month = 5, day = 12
-        let date1 = HarptosDate(year: year, month: month, day: day)
-        let date2 = HarptosDate(epoch: date1.epoch)
-        
+        let date1 = HarptosCalendar.getDateFor(year: year, month: month, day: day)
+        let date2 = HarptosCalendar.getInstant(epoch: date1.epoch) as! HarptosDate
+
         XCTAssert(date2.year == year)
         XCTAssert(date2.month == month)
         XCTAssert(date2.day == day)

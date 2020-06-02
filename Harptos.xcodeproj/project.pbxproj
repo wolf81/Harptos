@@ -282,12 +282,12 @@
 				7912E62924870C730019DBA6 /* HarptosFestival.swift */,
 				795A42B22483F8CA00A13C3F /* HarptosDate.swift */,
 				79FDFF7A2485FD4300D09FEA /* HarptosDateComponents.swift */,
+				7912E63124870D580019DBA6 /* HarptosInstant.swift */,
 				79A8C0032483C8C100346F44 /* Constants.swift */,
 				795A429A2483D6CB00A13C3F /* YearSegment.swift */,
 				795A429E2483DC2700A13C3F /* Epoch.swift */,
 				795A42A22483E3EE00A13C3F /* Festival.swift */,
 				795A42AE2483F57D00A13C3F /* Calendar.swift */,
-				7912E63124870D580019DBA6 /* HarptosInstant.swift */,
 			);
 			path = Harptos;
 			sourceTree = "<group>";

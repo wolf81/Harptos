@@ -35,7 +35,7 @@ enum HarptosYearSegment: Int, CaseIterable {
         return self.isFestival == false
     }
 
-    static func getSegmentIndex(for festival: Festival) -> Int {
+    static func getSegmentIndexFor(festival: Festival) -> Int {
         switch festival {
         case .midwinter: return 2
         case .greengrass: return 6
@@ -46,7 +46,7 @@ enum HarptosYearSegment: Int, CaseIterable {
         }
     }
     
-    static func getSegmentIndex(for month: Int) -> Int {
+    static func getSegmentIndexFor(month: Int) -> Int {
         switch month {
         case 1: return 1
         case 2: return 3

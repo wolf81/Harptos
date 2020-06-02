@@ -9,7 +9,11 @@
 import Foundation
 
 public class HarptosFestival: HarptosInstant {
-    let epoch: Int
+    public let epoch: Int
+    
+    public var year: Int {
+        return self.components.year
+    }
     
     private lazy var components: HarptosDateComponents = {
         let c = Calendar.getDateComponentsFor(epoch: self.epoch)
@@ -20,15 +24,9 @@ public class HarptosFestival: HarptosInstant {
     var festival: Festival {
         return self.components.segment.festival
     }
-    
-    public required init(epoch: Int) {
+        
+    init(epoch: Int) {
         self.epoch = epoch
-    }
-    
-    public convenience init(year: Int, festival: Festival) {
-        let segment = HarptosYearSegment.getSegmentIndex(for: festival)
-        let epoch = Calendar.getEpochFor(year: year, segment: segment, day: 1)
-        self.init(epoch: epoch)
     }
 }
 
