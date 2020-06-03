@@ -37,7 +37,7 @@ public final class HarptosCalendar {
         
     /// Return either a HarptosDate or HarptosFestival for a given epoch
     /// - Parameter epoch: The epoch value for with 0 represents 0 DR
-    public static func getInstant(epoch: Int) -> HarptosInstantProtocol {
+    public static func getInstantFor(epoch: Int) -> HarptosInstantProtocol {
         let components = Calendar.getDateComponentsFor(epoch: epoch)
         if components.segment.isFestival {
             return HarptosFestival(epoch: epoch)
