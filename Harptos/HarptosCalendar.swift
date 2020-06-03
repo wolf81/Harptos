@@ -34,7 +34,7 @@ public class HarptosCalendar {
     }
 }
 
-// MARK: - Retrieval of human-readable names for years, months & festivals
+// MARK: - Retrieve human-readable names for years, months & festivals
 
 extension HarptosCalendar {
     public static func getNameFor(year: Int) -> String? {

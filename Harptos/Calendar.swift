@@ -2329,22 +2329,22 @@ class Calendar {
         let remainingYearMinutes = epoch - (year * Constants.minutesPerYear) - Int(leapDayMinutes)
         var day = Int(remainingYearMinutes / Constants.minutesPerDay)
         
-        var theMonth: HarptosYearSegment = HarptosYearSegment.allCases.first!
+        var segment: HarptosYearSegment = HarptosYearSegment.allCases.first!
 
-        for month in HarptosYearSegment.allCases {
-            theMonth = month
+        for aSegment in HarptosYearSegment.allCases {
+            segment = aSegment
 
-            var daysInMonth = month.isFestival ? 1 : 30
-            if isLeapYear(year) && month == .flamerule { daysInMonth += 1 }
+            var segmentDays = aSegment.isFestival ? 1 : 30
+            if isLeapYear(year) && aSegment == .flamerule { segmentDays += 1 }
             
-            if day > daysInMonth {
-                day -= daysInMonth
+            if day > segmentDays {
+                day -= segmentDays
             } else {
                 break
             }
         }
         
-        return HarptosDateComponents(year: year, segment: theMonth, day: day)
+        return HarptosDateComponents(year: year, segment: segment, day: day)
     }
     
     // MARK: - Private

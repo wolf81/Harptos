@@ -1,5 +1,5 @@
 //
-//  HarptosInstant.swift
+//  HarptosInstantProtocol.swift
 //  Harptos
 //
 //  Created by Wolfgang Schreurs on 03/06/2020.
