@@ -2334,8 +2334,9 @@ class Calendar {
         for aSegment in InstantSegment.allCases {
             segment = aSegment
 
-            var segmentDays = aSegment.isFestival ? 1 : 30
-            if isLeapYear(year) && aSegment == .flamerule { segmentDays += 1 }
+            let segmentDays = aSegment.isFestival ? 1 : 30
+            
+            if isLeapYear(year) == false && aSegment == .shieldmeet { continue }
             
             if day > segmentDays {
                 day -= segmentDays
@@ -2357,14 +2358,12 @@ class Calendar {
     private static func getEpochFor(segment: Int, inYear year: Int) -> Int {
         var minutes = 0
         for i in 1 ..< segment {
+            if isLeapYear(year) == false && i == InstantSegment.shieldmeet.rawValue { continue }
+            
             minutes += (InstantSegment(rawValue: i)!.isFestival
                 ? Constants.minutesPerDay * 1
                 : Constants.minutesPerDay * 30
-            )
-            
-            if (i == InstantSegment.flamerule.rawValue) && isLeapYear(year) {
-                minutes += Constants.minutesPerDay
-            }
+            )            
         }
         return minutes
     }

@@ -19,6 +19,7 @@ enum InstantSegment: Int, CaseIterable {
     case kythorn
     case flamerule
     case midsummer // festival
+    case shieldmeet // festival only in leap years
     case eleasis
     case eleint
     case highharvestide // festival
@@ -28,7 +29,7 @@ enum InstantSegment: Int, CaseIterable {
     case nightal
     
     var isFestival: Bool {
-        return [.midwinter, .greengrass, .midsummer, .highharvestide, .moonfeast].contains(self)
+        return [.midwinter, .greengrass, .midsummer, .shieldmeet, .highharvestide, .moonfeast].contains(self)
     }
     
     var isMonth: Bool {
@@ -40,9 +41,9 @@ enum InstantSegment: Int, CaseIterable {
         case .midwinter: return 2
         case .greengrass: return 6
         case .midsummer: return 10
-        case .highharvestide: return 13
-        case .moonfeast: return 16
-        case .shieldmeet: fatalError()
+        case .shieldmeet: return 11
+        case .highharvestide: return 14
+        case .moonfeast: return 17
         }
     }
     
@@ -55,11 +56,11 @@ enum InstantSegment: Int, CaseIterable {
         case 5: return 7
         case 6: return 8
         case 7: return 9
-        case 8: return 11
-        case 9: return 12
-        case 10: return 14
-        case 11: return 15
-        case 12: return 17
+        case 8: return 12
+        case 9: return 13
+        case 10: return 15
+        case 11: return 16
+        case 12: return 18
         default: fatalError()
         }
     }
@@ -69,8 +70,9 @@ enum InstantSegment: Int, CaseIterable {
         case 2: return .midwinter
         case 6: return .greengrass
         case 10: return .midsummer
-        case 13: return .highharvestide
-        case 16: return .moonfeast
+        case 11: return .shieldmeet
+        case 14: return .highharvestide
+        case 17: return .moonfeast
         default: fatalError()
         }
     }
@@ -84,11 +86,11 @@ enum InstantSegment: Int, CaseIterable {
         case 7: return 5
         case 8: return 6
         case 9: return 7
-        case 11: return 8
-        case 12: return 9
-        case 14: return 10
-        case 15: return 11
-        case 17: return 12
+        case 12: return 8
+        case 13: return 9
+        case 15: return 10
+        case 16: return 11
+        case 18: return 12
         default: fatalError()
         }
     }
