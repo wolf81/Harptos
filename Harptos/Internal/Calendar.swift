@@ -2321,13 +2321,13 @@ class Calendar {
     }
 
     static func getDateComponentsFor(epoch: Int) -> InstantComponents {
-        let days = Float(epoch / Constants.minutesPerDay)
-        let leapDays = Float(epoch) / Float(Constants.minutesPerYear) / 4
+        let days = Float(epoch / Constants.secondsPerDay)
+        let leapDays = Float(epoch) / Float(Constants.secondsPerYear) / 4
         let year = Int(floor((days - leapDays) / Float(Constants.daysPerYear)))
 
-        let leapDayMinutes = Float(year) / 4 * Float(Constants.minutesPerDay)
-        let remainingYearMinutes = epoch - (year * Constants.minutesPerYear) - Int(leapDayMinutes)
-        var day = Int(remainingYearMinutes / Constants.minutesPerDay)
+        let leapDaySeconds = Float(year) / 4 * Float(Constants.secondsPerDay)
+        let remainingYearSeconds = epoch - (year * Constants.secondsPerYear) - Int(leapDaySeconds)
+        var day = Int(remainingYearSeconds / Constants.secondsPerDay)
         
         var segment: InstantSegment = InstantSegment.allCases.first!
 
@@ -2351,8 +2351,8 @@ class Calendar {
     // MARK: - Private
         
     private static func getEpochFor(year: Int) -> Int {
-        let leapDayMinutes = Float(year) / 4 * Float(Constants.minutesPerDay)
-        return (year * Constants.minutesPerYear) + Int(leapDayMinutes)
+        let leapDaySeconds = Float(year) / 4 * Float(Constants.secondsPerDay)
+        return (year * Constants.secondsPerYear) + Int(leapDaySeconds)
     }
 
     private static func getEpochFor(segment: Int, inYear year: Int) -> Int {
@@ -2361,15 +2361,15 @@ class Calendar {
             if isLeapYear(year) == false && i == InstantSegment.shieldmeet.rawValue { continue }
             
             minutes += (InstantSegment(rawValue: i)!.isFestival
-                ? Constants.minutesPerDay * 1
-                : Constants.minutesPerDay * 30
+                ? Constants.secondsPerDay * 1
+                : Constants.secondsPerDay * 30
             )            
         }
         return minutes
     }
 
     private static func getEpochFor(day: Int) -> Int {
-        return day * Constants.minutesPerDay
+        return day * Constants.secondsPerDay
     }
     
     private static func isLeapYear(_ year: Int) -> Bool {
