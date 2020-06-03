@@ -13,7 +13,11 @@ public protocol HarptosInstantProtocol {
     
     var year: Int { get }
     
-    func byAdding(days: Int) -> HarptosInstantProtocol
+    func instantByAdding(days: Int) -> HarptosInstantProtocol
+    
+    func instantByAdding(months: Int) -> HarptosInstantProtocol
+
+    func instantByAdding(years: Int) -> HarptosInstantProtocol
 }
 
 public class HarptosInstant: HarptosInstantProtocol {
@@ -31,17 +35,17 @@ public class HarptosInstant: HarptosInstantProtocol {
 }
 
 extension HarptosInstantProtocol {
-    public func byAdding(days: Int) -> HarptosInstantProtocol {
+    public func instantByAdding(days: Int) -> HarptosInstantProtocol {
         let epoch = self.epoch + days * Constants.minutesPerDay
         return HarptosCalendar.getInstant(epoch: epoch)
     }
     
-    public func byAddingMonths(months: Int) -> HarptosInstantProtocol {
+    public func instantByAdding(months: Int) -> HarptosInstantProtocol {
         let epoch = self.epoch + months * 30 * Constants.minutesPerDay
         return HarptosCalendar.getInstant(epoch: epoch)
     }
     
-    public func byAddingYears(years: Int) -> HarptosInstantProtocol {
+    public func instantByAdding(years: Int) -> HarptosInstantProtocol {
         let epoch = self.epoch + year * Constants.minutesPerYear
         return HarptosCalendar.getInstant(epoch: epoch)
     }
