@@ -2320,7 +2320,7 @@ class Calendar {
         return yearInfo[year]
     }
 
-    static func getDateComponentsFor(epoch: Int) -> HarptosDateComponents {
+    static func getDateComponentsFor(epoch: Int) -> InstantComponents {
         let days = Float(epoch / Constants.minutesPerDay)
         let leapDays = Float(epoch) / Float(Constants.minutesPerYear) / 4
         let year = Int(floor((days - leapDays) / Float(Constants.daysPerYear)))
@@ -2329,9 +2329,9 @@ class Calendar {
         let remainingYearMinutes = epoch - (year * Constants.minutesPerYear) - Int(leapDayMinutes)
         var day = Int(remainingYearMinutes / Constants.minutesPerDay)
         
-        var segment: HarptosYearSegment = HarptosYearSegment.allCases.first!
+        var segment: InstantSegment = InstantSegment.allCases.first!
 
-        for aSegment in HarptosYearSegment.allCases {
+        for aSegment in InstantSegment.allCases {
             segment = aSegment
 
             var segmentDays = aSegment.isFestival ? 1 : 30
@@ -2344,7 +2344,7 @@ class Calendar {
             }
         }
         
-        return HarptosDateComponents(year: year, segment: segment, day: day)
+        return InstantComponents(year: year, segment: segment, day: day)
     }
     
     // MARK: - Private
@@ -2357,12 +2357,12 @@ class Calendar {
     private static func getEpochFor(segment: Int, inYear year: Int) -> Int {
         var minutes = 0
         for i in 1 ..< segment {
-            minutes += (HarptosYearSegment(rawValue: i)!.isFestival
+            minutes += (InstantSegment(rawValue: i)!.isFestival
                 ? Constants.minutesPerDay * 1
                 : Constants.minutesPerDay * 30
             )
             
-            if (i == HarptosYearSegment.flamerule.rawValue) && isLeapYear(year) {
+            if (i == InstantSegment.flamerule.rawValue) && isLeapYear(year) {
                 minutes += Constants.minutesPerDay
             }
         }

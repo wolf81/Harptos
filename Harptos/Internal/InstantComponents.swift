@@ -1,5 +1,5 @@
 //
-//  HarptosDateComponents.swift
+//  InstantComponents.swift
 //  Harptos
 //
 //  Created by Wolfgang Schreurs on 02/06/2020.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct HarptosDateComponents {
+struct InstantComponents {
     var year: Int
-    var segment: HarptosYearSegment
+    var segment: InstantSegment
     var day: Int
 }

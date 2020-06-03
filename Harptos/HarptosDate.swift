@@ -8,9 +8,13 @@
 
 import Foundation
 
-public class HarptosDate: HarptosInstant {
-    public var month: Int { self.components.segment.month }
+/// A HarptosDate represents a date on the Harptos calendar
+public final class HarptosDate: HarptosInstant {
     
+    /// The month
+    public var month: Int { self.components.segment.month }
+        
+    /// The day
     public var day: Int { self.components.day }    
 }
 

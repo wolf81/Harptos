@@ -8,7 +8,20 @@
 
 import Foundation
 
-public class HarptosFestival: HarptosInstant {
+/// Festivals as defined by the Harptos calendar
+public enum Festival: Int {
+    case midwinter
+    case greengrass
+    case midsummer
+    case highharvestide
+    case moonfeast
+    case shieldmeet
+}
+
+/// A HarptosFestival represents a festival in a given year on the Harptos calendar
+public final class HarptosFestival: HarptosInstant {
+    
+    /// The festival
     public var festival: Festival { self.components.segment.festival }                
 }
 

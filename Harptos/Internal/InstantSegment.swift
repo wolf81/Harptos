@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum HarptosYearSegment: Int, CaseIterable {
+enum InstantSegment: Int, CaseIterable {
     case hammer = 1
     case midwinter // festival
     case alturiak
@@ -116,12 +116,12 @@ enum HarptosYearSegment: Int, CaseIterable {
     }
     
     init(month: Int) {
-        let segmentIdx = HarptosYearSegment.getSegmentIndexFor(month: month)
+        let segmentIdx = InstantSegment.getSegmentIndexFor(month: month)
         self.init(rawValue: segmentIdx)!
     }
     
     init(festival: Festival) {
-        let segmentIdx = HarptosYearSegment.getSegmentIndexFor(festival: festival)
+        let segmentIdx = InstantSegment.getSegmentIndexFor(festival: festival)
         self.init(rawValue: segmentIdx)!
     }
 }
