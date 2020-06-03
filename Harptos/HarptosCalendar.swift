@@ -16,12 +16,15 @@ public final class HarptosCalendar {
     ///   - year: The year, it's recommended to limit the range from -700 DR to 1600 DR
     ///   - month: A value between 1 and 12
     ///   - day: A value between 1 and 30
-    public static func getDateFor(year: Int, month: Int, day: Int) -> HarptosDate {
+    public static func getDateFor(year: Int, month: Int, day: Int, hour: Int = 0, minute: Int = 0, second: Int = 0) -> HarptosDate {
         assert((1 ... 12).contains(month), "Months should be between 1 and 12")
         assert((1 ... 30).contains(day), "Days should be between 1 and 30")
-                
+        assert((0 ..< 24).contains(hour), "Hours should be between 0 and 23")
+        assert((0 ..< 60).contains(minute), "Minutes should be between 0 and 59")
+        assert((0 ..< 60).contains(second), "Seconds should be between 0 and 59")
+        
         let segment = InstantSegment.getSegmentIndexFor(month: month)
-        let epoch = Calendar.getEpochFor(year: year, segment: segment, day: day)
+        let epoch = Calendar.getEpochFor(year: year, segment: segment, day: day, hour: hour, minute: minute, second: second)
         return HarptosDate(epoch: epoch)
     }
         
@@ -29,11 +32,15 @@ public final class HarptosCalendar {
     /// - Parameters:
     ///   - year: The year, it's recommended to limit the range from -700 DR to 1600 DR
     ///   - festival: A festival
-    public static func getFestivalFor(year: Int, festival: Festival) -> HarptosFestival {
+    public static func getFestivalFor(year: Int, festival: Festival, hour: Int = 0, minute: Int = 0, second: Int = 0) -> HarptosFestival {
+        assert((0 ..< 24).contains(hour), "Hours should be between 0 and 23")
+        assert((0 ..< 60).contains(minute), "Minutes should be between 0 and 59")
+        assert((0 ..< 60).contains(second), "Seconds should be between 0 and 59")
+
         if festival == .shieldmeet { assert(year % 4 == 0, "Shieldmeet can only occur on leap years") }
         
         let segment = InstantSegment.getSegmentIndexFor(festival: festival)
-        let epoch = Calendar.getEpochFor(year: year, segment: segment, day: 1)
+        let epoch = Calendar.getEpochFor(year: year, segment: segment, day: 1, hour: hour, minute: minute, second: second)
         return HarptosFestival(epoch: epoch)
     }
         

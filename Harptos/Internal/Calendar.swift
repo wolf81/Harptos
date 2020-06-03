@@ -9,11 +9,12 @@
 import Foundation
 
 class Calendar {
-    static func getEpochFor(year: Int, segment: Int, day: Int) -> Int {
+    static func getEpochFor(year: Int, segment: Int, day: Int, hour: Int, minute: Int, second: Int) -> Int {
         return (
             getEpochFor(year: year) +
             getEpochFor(segment: segment, inYear: year) +
-            getEpochFor(day: day)
+            getEpochFor(day: day) +
+            getEpochFor(hour: hour, minute: minute, second: second)
         )
     }
         
@@ -2345,7 +2346,12 @@ class Calendar {
             }
         }
         
-        return InstantComponents(year: year, segment: segment, day: day)
+        let remainingSeconds = remainingYearSeconds % Constants.secondsPerDay
+        let hour = remainingSeconds / Constants.secondsPerHour
+        let minute = (remainingSeconds % Constants.secondsPerHour) / 60
+        let second = (remainingSeconds % Constants.secondsPerHour) % 60
+        
+        return InstantComponents(year: year, segment: segment, day: day, hour: hour, minute: minute, second: second)
     }
     
     // MARK: - Private
@@ -2370,6 +2376,10 @@ class Calendar {
 
     private static func getEpochFor(day: Int) -> Int {
         return day * Constants.secondsPerDay
+    }
+    
+    private static func getEpochFor(hour: Int, minute: Int, second: Int) -> Int {
+        return hour * Constants.secondsPerHour + minute * Constants.secondsPerMinute + second
     }
     
     private static func isLeapYear(_ year: Int) -> Bool {

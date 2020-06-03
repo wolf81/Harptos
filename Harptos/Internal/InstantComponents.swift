@@ -12,4 +12,7 @@ struct InstantComponents {
     var year: Int
     var segment: InstantSegment
     var day: Int
+    var hour: Int
+    var minute: Int
+    var second: Int
 }
