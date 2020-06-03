@@ -19,6 +19,20 @@ class HarptosTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    func testModifyTime() {
+        let date1 = HarptosCalendar.getDateFor(year: 1200, month: 1, day: 30, hour: 1, minute: 5, second: 2)
+        let instant = date1
+            .instantByAdding(hours: 2)
+            .instantByAdding(minutes: 6)
+            .instantByAdding(seconds: 5)
+        
+        print(instant)
+        
+        XCTAssert(instant.hour == 3)
+        XCTAssert(instant.minute == 11)
+        XCTAssert(instant.second == 7)
+    }
+    
     func testTime() {
         let date1 = HarptosCalendar.getDateFor(year: 1200, month: 1, day: 30, hour: 1, minute: 5, second: 2)
 

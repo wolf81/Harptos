@@ -22,6 +22,6 @@ public final class HarptosDate: HarptosInstant {
 
 extension HarptosDate: CustomStringConvertible {
     public var description: String {
-        return "\(components.year) \(components.segment.month) \(components.day)"
+        return "\(components.year) \(components.segment.month) \(components.day) \(components.hour):\(components.minute):\(components.second)"
     }
 }

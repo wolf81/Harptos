@@ -29,6 +29,6 @@ public final class HarptosFestival: HarptosInstant {
 
 extension HarptosFestival: CustomStringConvertible {
     public var description: String {
-        "\(components.segment.name) \(components.year)"
+        "\(components.segment.name) \(components.year) \(components.hour):\(components.minute):\(components.second)"
     }
 }

@@ -25,9 +25,18 @@ My intention is to provide the following functionality:
 
 ## Code Structure
 
-In AD&D there are normally 365 days a year. There's a leap day added every 4 years. Every month has 30 days and 5 distict festival days exist in between (6 festival days during a leap year). Because of this distinction in festivals and "normal" dates, the library makes use of a `HarptosInstantProtocol` protocol to describe a moment in time. A `HarptosDate` & `HarptosFestival` classes implement this protocol. 
+First it's important to understand time in AD&D according to the Harptos calender:
 
-Instants (dates & festivals) are created through the HarptosCalendar class. Instants are immutable, but once an Instant is retrieved it's possible to generate new Instants by calling modification methods.
+- A year exists out of 356 days or 366 days in a leap year
+- Leap years occur every 4 years
+- A month lasts for 30 days
+- Between several months there are festivals that last for a day. 
+- For normal years there are 5 festivals in a year, for leap years a 6th festival day is added
+- (!) The aforementioned festivals are not part of any month
+
+Because of the distinction between months and festivals, the library makes use of a `HarptosInstantProtocol` protocol to describe a moment (an instant) in time. A `HarptosDate` & `HarptosFestival` classes implement this protocol. 
+
+`Instants` are created through the `HarptosCalendar` class. `Instants` are immutable, but once an Instant is retrieved it's possible to generate new `Instants` based on the existing one by calling modification functions.
 
 A short example is as follows:
 
@@ -35,11 +44,16 @@ A short example is as follows:
 let date1 = HarptosCalendar.getDateFor(year: 1322, month: 3, day: 5)
 let date2 = date1.instantByAdding(days: 1) as! HarptosDate
 assert((date1.day + 1) == date2.day)
-
 ```
 
-Please note that since the `instantByAdding(...)` function returns an object conforming to `HarptosInstantProtocol`, one needs to typecast the Instant to the correct type. The casting is required because e.g. a day after 30 Hammer (a HarptosDate) the Midwinter festival (a HarptosFestival) occurs, which is not part of the Hammer month.
+In the above example an immutable object `date1` is created and by calling the `instantByAdding(...)` method we create a new instant with a time that was based on the time of the `date1` object. 
 
-I believe the typecasting should not be a problem most of the time. The way I intend to use the library myself is to create a start date and from then on just add seconds after every play turn. Only when needing to display the `HarptosInstant`, the typecasting could be useful, though possibly not required if the provided string conversions for festivals and dates are sufficient.
+Please note that since the `instantByAdding(...)` function returns an object conforming to `HarptosInstantProtocol`, one needs to typecast the `Instant` to read property values that are not available in the protocol. A `HarptosDate` contains a property `month`, but this property doesn't exist in `HarptosFestival`. When adding or removing time from an instant we could be dealing with objects of either type.
 
-I'm considering to allow consumers of the library to provide their own formatters for dates and festivals which could then be returned through the `description` property.
+For my own purposes I don't believe I'll need to typecast much, so I don't see this as a big issue. The way I imagine how I'll use this library is as follows:
+
+- At the start of the game I create a date that is appropriate for my setting.
+- Every time a user plays a turn, some seconds are added.
+- Only when displaying the current date somewhere in the screen, I might need to typecast, so I can show either `21 Hammer 1322 DR 14:05:22` or `Midwinter 1322 23:15:49`, depending on the casted type.
+
+If the conversion is a bit of a hassle, I would probably add some date formatter classes.

@@ -102,12 +102,12 @@ extension HarptosInstantProtocol {
     }
     
     public func instantByAdding(minutes: Int) -> HarptosInstantProtocol {
-        let epoch = self.epoch + minutes * Constants.secondsPerMinute * Constants.secondsPerYear
+        let epoch = self.epoch + minutes * Constants.secondsPerMinute
         return HarptosCalendar.getInstantFor(epoch: epoch)
     }
         
     public func instantByAdding(hours: Int) -> HarptosInstantProtocol {
-        let epoch = self.epoch + hours + Constants.secondsPerHour * Constants.secondsPerYear
+        let epoch = self.epoch + hours * Constants.secondsPerHour
         return HarptosCalendar.getInstantFor(epoch: epoch)
     }
 }
