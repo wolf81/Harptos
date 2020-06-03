@@ -54,26 +54,6 @@
 		795A429A2483D6CB00A13C3F /* InstantSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantSegment.swift; sourceTree = "<group>"; };
 		795A42AE2483F57D00A13C3F /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		795A42B22483F8CA00A13C3F /* HarptosDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarptosDate.swift; sourceTree = "<group>"; };
-		79A8BF832483BC1100346F44 /* ches.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = ches.js; sourceTree = "<group>"; };
-		79A8BF842483BC1100346F44 /* flamerule.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = flamerule.js; sourceTree = "<group>"; };
-		79A8BF852483BC1100346F44 /* mirtul.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = mirtul.js; sourceTree = "<group>"; };
-		79A8BF862483BC1100346F44 /* kythorn.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = kythorn.js; sourceTree = "<group>"; };
-		79A8BF872483BC1100346F44 /* eleint.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = eleint.js; sourceTree = "<group>"; };
-		79A8BF882483BC1100346F44 /* hammer.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = hammer.js; sourceTree = "<group>"; };
-		79A8BF892483BC1100346F44 /* marpenoth.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = marpenoth.js; sourceTree = "<group>"; };
-		79A8BF8A2483BC1100346F44 /* index.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
-		79A8BF8B2483BC1100346F44 /* tarsakh.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = tarsakh.js; sourceTree = "<group>"; };
-		79A8BF8C2483BC1100346F44 /* uktar.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = uktar.js; sourceTree = "<group>"; };
-		79A8BF8D2483BC1100346F44 /* nightal.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = nightal.js; sourceTree = "<group>"; };
-		79A8BF8E2483BC1100346F44 /* alturiak.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = alturiak.js; sourceTree = "<group>"; };
-		79A8BF8F2483BC1100346F44 /* eleasis.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = eleasis.js; sourceTree = "<group>"; };
-		79A8BF902483BC1100346F44 /* years.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = years.js; sourceTree = "<group>"; };
-		79A8BF912483BC1100346F44 /* epoch.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = epoch.js; sourceTree = "<group>"; };
-		79A8BF922483BC1100346F44 /* calendar.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = calendar.js; sourceTree = "<group>"; };
-		79A8BF992483BC1100346F44 /* index.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
-		79A8BF9B2483BC1100346F44 /* index.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
-		79A8BFA52483BC1100346F44 /* backup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = backup.js; sourceTree = "<group>"; };
-		79A8BFA62483BC1100346F44 /* index.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
 		79A8BFCD2483BFDA00346F44 /* Harptos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Harptos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79A8BFCF2483BFDA00346F44 /* Harptos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Harptos.h; sourceTree = "<group>"; };
 		79A8BFD02483BFDA00346F44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -138,7 +118,6 @@
 		79A8BF232483BACA00346F44 = {
 			isa = PBXGroup;
 			children = (
-				79A8BF4F2483BB7800346F44 /* Hoffmann */,
 				79A8BFFE2483C12900346F44 /* Harptos */,
 				79A8BFCE2483BFDA00346F44 /* Harptos macOS */,
 				79A8BFEA2483C07E00346F44 /* Harptos iOS */,
@@ -157,89 +136,6 @@
 				79A8BFF62483C0F400346F44 /* Harptos.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		79A8BF4F2483BB7800346F44 /* Hoffmann */ = {
-			isa = PBXGroup;
-			children = (
-				79A8BF932483BC1100346F44 /* components */,
-				79A8BFA32483BC1100346F44 /* containers */,
-				79A8BF812483BC1100346F44 /* data */,
-			);
-			path = Hoffmann;
-			sourceTree = "<group>";
-		};
-		79A8BF812483BC1100346F44 /* data */ = {
-			isa = PBXGroup;
-			children = (
-				79A8BF822483BC1100346F44 /* months */,
-				79A8BF902483BC1100346F44 /* years.js */,
-				79A8BF912483BC1100346F44 /* epoch.js */,
-				79A8BF922483BC1100346F44 /* calendar.js */,
-			);
-			path = data;
-			sourceTree = "<group>";
-		};
-		79A8BF822483BC1100346F44 /* months */ = {
-			isa = PBXGroup;
-			children = (
-				79A8BF832483BC1100346F44 /* ches.js */,
-				79A8BF842483BC1100346F44 /* flamerule.js */,
-				79A8BF852483BC1100346F44 /* mirtul.js */,
-				79A8BF862483BC1100346F44 /* kythorn.js */,
-				79A8BF872483BC1100346F44 /* eleint.js */,
-				79A8BF882483BC1100346F44 /* hammer.js */,
-				79A8BF892483BC1100346F44 /* marpenoth.js */,
-				79A8BF8A2483BC1100346F44 /* index.js */,
-				79A8BF8B2483BC1100346F44 /* tarsakh.js */,
-				79A8BF8C2483BC1100346F44 /* uktar.js */,
-				79A8BF8D2483BC1100346F44 /* nightal.js */,
-				79A8BF8E2483BC1100346F44 /* alturiak.js */,
-				79A8BF8F2483BC1100346F44 /* eleasis.js */,
-			);
-			path = months;
-			sourceTree = "<group>";
-		};
-		79A8BF932483BC1100346F44 /* components */ = {
-			isa = PBXGroup;
-			children = (
-				79A8BF982483BC1100346F44 /* selune */,
-				79A8BF9A2483BC1100346F44 /* bar */,
-			);
-			path = components;
-			sourceTree = "<group>";
-		};
-		79A8BF982483BC1100346F44 /* selune */ = {
-			isa = PBXGroup;
-			children = (
-				79A8BF992483BC1100346F44 /* index.js */,
-			);
-			path = selune;
-			sourceTree = "<group>";
-		};
-		79A8BF9A2483BC1100346F44 /* bar */ = {
-			isa = PBXGroup;
-			children = (
-				79A8BF9B2483BC1100346F44 /* index.js */,
-			);
-			path = bar;
-			sourceTree = "<group>";
-		};
-		79A8BFA32483BC1100346F44 /* containers */ = {
-			isa = PBXGroup;
-			children = (
-				79A8BFA42483BC1100346F44 /* calendar */,
-			);
-			path = containers;
-			sourceTree = "<group>";
-		};
-		79A8BFA42483BC1100346F44 /* calendar */ = {
-			isa = PBXGroup;
-			children = (
-				79A8BFA52483BC1100346F44 /* backup.js */,
-				79A8BFA62483BC1100346F44 /* index.js */,
-			);
-			path = calendar;
 			sourceTree = "<group>";
 		};
 		79A8BFCE2483BFDA00346F44 /* Harptos macOS */ = {
