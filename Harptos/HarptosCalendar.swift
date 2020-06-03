@@ -17,8 +17,8 @@ public final class HarptosCalendar {
     ///   - month: A value between 1 and 12
     ///   - day: A value between 1 and 30
     public static func getDateFor(year: Int, month: Int, day: Int) -> HarptosDate {
-        assert((1 ... 12).contains(month))
-        assert((1 ... 30).contains(day))
+        assert((1 ... 12).contains(month), "Months should be between 1 and 12")
+        assert((1 ... 30).contains(day), "Days should be between 1 and 30")
                 
         let segment = InstantSegment.getSegmentIndexFor(month: month)
         let epoch = Calendar.getEpochFor(year: year, segment: segment, day: day)
@@ -30,6 +30,8 @@ public final class HarptosCalendar {
     ///   - year: The year, it's recommended to limit the range from -700 DR to 1600 DR
     ///   - festival: A festival
     public static func getFestivalFor(year: Int, festival: Festival) -> HarptosFestival {
+        if festival == .shieldmeet { assert(year % 4 == 0, "Shieldmeet can only occur on leap years") }
+        
         let segment = InstantSegment.getSegmentIndexFor(festival: festival)
         let epoch = Calendar.getEpochFor(year: year, segment: segment, day: 1)
         return HarptosFestival(epoch: epoch)

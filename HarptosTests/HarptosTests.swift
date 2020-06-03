@@ -46,6 +46,33 @@ class HarptosTests: XCTestCase {
         XCTAssert((instant as! HarptosFestival).festival == .midwinter)
     }
     
+    func testTransitionFromMidsummerToShieldmeetInLeapYears() {
+        let date1 = HarptosCalendar.getFestivalFor(year: 400, festival: .midsummer)
+        let instant = date1.instantByAdding(days: 1)
+        
+        XCTAssert(instant is HarptosFestival)
+        XCTAssert(instant.year == date1.year)
+        XCTAssert((instant as! HarptosFestival).festival == .shieldmeet)
+    }
+    
+    func testTransitionFromMidsummerToEleasis() {
+        let date1 = HarptosCalendar.getFestivalFor(year: 401, festival: .midsummer)
+        let instant = date1.instantByAdding(days: 1)
+        
+        XCTAssert(instant is HarptosDate)
+        XCTAssert(instant.year == date1.year)
+        XCTAssert((instant as! HarptosDate).month == 8)
+    }
+
+    func testTransitionFromMidsummerToFlamerule() {
+        let date1 = HarptosCalendar.getFestivalFor(year: 401, festival: .midsummer)
+        let instant = date1.instantByAdding(days: -1)
+        
+        XCTAssert(instant is HarptosDate)
+        XCTAssert(instant.year == date1.year)
+        XCTAssert((instant as! HarptosDate).month == 7)
+    }
+
     func testPositiveTransitionToNextYear() {
         let date1 = HarptosCalendar.getDateFor(year: 533, month: 12, day: 30)
         let instant = date1.instantByAdding(days: 1)
