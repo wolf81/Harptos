@@ -36,8 +36,14 @@ public class HarptosInstant: HarptosInstantProtocol {
 
 extension HarptosInstantProtocol {
     public func instantByAdding(days: Int) -> HarptosInstantProtocol {
+        print("epoch1: \(self.epoch)")
+        
         let epoch = self.epoch + days * Constants.minutesPerDay
-        return HarptosCalendar.getInstant(epoch: epoch)
+        let instant = HarptosCalendar.getInstant(epoch: epoch)
+        
+        print("epoch2: \(instant.epoch)")
+        
+        return instant
     }
     
     public func instantByAdding(months: Int) -> HarptosInstantProtocol {

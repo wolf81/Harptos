@@ -2322,19 +2322,15 @@ class Calendar {
 
     static func getDateComponentsFor(epoch: Int) -> HarptosDateComponents {
         let days = Float(epoch / Constants.minutesPerDay)
-        let leapDays = Float(epoch / Constants.minutesPerYear / 4)
+        let leapDays = Float(epoch) / Float(Constants.minutesPerYear) / 4
         let year = Int(floor((days - leapDays) / Float(Constants.daysPerYear)))
-    
-        let remainingYearMinutes = epoch - (year * Constants.minutesPerYear) - (year / 4) * Constants.minutesPerDay
-        var day = Int(Float(remainingYearMinutes) / Float(Constants.minutesPerDay))
 
-        // TODO:
-        // I'm not sure why I need to add 1 day in case of a negative epoch when we're not in a
-        // leap year, but it's required to get the correct date - figure this out
-        if epoch < 0 && isLeapYear(year) == false { day += 1 }
-
-        var theMonth: HarptosYearSegment!
+        let leapDayMinutes = Float(year) / 4 * Float(Constants.minutesPerDay)
+        let remainingYearMinutes = epoch - (year * Constants.minutesPerYear) - Int(leapDayMinutes)
+        var day = Int(remainingYearMinutes / Constants.minutesPerDay)
         
+        var theMonth: HarptosYearSegment = HarptosYearSegment.allCases.first!
+
         for month in HarptosYearSegment.allCases {
             theMonth = month
 
@@ -2344,7 +2340,6 @@ class Calendar {
             if day > daysInMonth {
                 day -= daysInMonth
             } else {
-                print("month: \(month.name)")
                 break
             }
         }
