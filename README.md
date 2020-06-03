@@ -1,3 +1,5 @@
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 # Harptos
 
 A small library for handling AD&D dates & times with regards to the Calendar of Harptos as displayed here:
