@@ -25,9 +25,7 @@ class HarptosTests: XCTestCase {
             .instantByAdding(hours: 2)
             .instantByAdding(minutes: 6)
             .instantByAdding(seconds: 5)
-        
-        print(instant)
-        
+                
         XCTAssert(instant.hour == 3)
         XCTAssert(instant.minute == 11)
         XCTAssert(instant.second == 7)
