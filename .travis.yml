@@ -1,5 +1,5 @@
 language: swift
-osx_image: xcode10.2
+osx_image: xcode11.5
 xcode_destination: platform=macOS
 xcode_workspace: Harptos.xcworkspace
 xcode_scheme: "Harptos macOS"
