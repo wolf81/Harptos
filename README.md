@@ -44,7 +44,7 @@ First it's important to understand time in AD&D according to the Harptos calende
 
 Use the `HarptosCalendar` to create `HarptosTime` objects based on a date or a festival:
 
-```
+```swift
 let date = HarptosCalendar.getTimeFor(year: 1200, month: 1, day: 30, hour: 1, minute: 5, second: 2)
 let festival = HarptosCalendar.getTimeFor(year: 1200, festival: .midwinter) 
 ```
@@ -52,13 +52,15 @@ let festival = HarptosCalendar.getTimeFor(year: 1200, festival: .midwinter)
 ### Manipulation of `HarptosTime` objects
 
 In order to manipulate `HarptosTime` objects, use the appropriate methods on the `HarptosTime` objects:
-```
+
+```swift
 let time1 = HarptosCalendar.getTimeFor(year: 1200, month: 1, day: 24, hour: 5, minute: 33, second: 5) // 1200 01 24 - 05:33:05
 let time2 = time1.timeByAdding(days: 1) // 1200 01 25 - 05:33:05
 ```
 
 For going in the past, use negative values, e.g.:
-```
+
+```swift
 let time1 = HarptosCalendar.getTimeFor(year: 1200, month: 1, day: 24, hour: 5, minute: 33, second: 5) // 1200 01 24 - 05:33:05
 let time2 = time1.timeByAdding(minutes: -30) // // 1200 01 24 - 05:03:05
 ```
@@ -67,7 +69,7 @@ let time2 = time1.timeByAdding(minutes: -30) // // 1200 01 24 - 05:03:05
 
 It's possible to provide your own format strings. In order to do so, create a `HarptosTimeFormatter` and provide it with format strings for months and festivals:
 
-```
+```swift
 let formatter = HarptosTimeFormatter(monthFormat: "dd MMM', 'YYYY 'DR'", festivalFormat: "M', 'Y")
 let date = HarptosCalendar.getTimeFor(year: 1200, month: 1, day: 30, hour: 1, minute: 5, second: 2)
 let dateString = formatter.string(from: date) // 30 Hammer, 1200 DR
