@@ -1,4 +1,4 @@
-![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/wolf81/Harptos.svg) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ![Supported platforms](https://img.shields.io/static/v1.svg?label=platform&message=macOS%20|%20tvOS%20|%20iOS&color=lightgrey)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/wolf81/Harptos.svg) [![Build Status](https://travis-ci.org/wolf81/Harptos.svg?branch=master)](https://travis-ci.org/wolf81/Harptos) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ![Supported platforms](https://img.shields.io/static/v1.svg?label=platform&message=macOS%20|%20tvOS%20|%20iOS&color=lightgrey) [![Codecov](https://img.shields.io/codecov/c/github/wolf81/Harptos.svg)](https://codecov.io/gh/wolf81/Harptos)
 
 # Harptos
 
