@@ -18,7 +18,7 @@ class HarptosTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-    
+        
     func testDateFormatter() {
         let formatter = HarptosTimeFormatter(monthFormat: "dd MMM', 'YYYY 'DR'", festivalFormat: "M', 'Y")
         let date = HarptosCalendar.getTimeFor(year: 1200, month: 1, day: 30, hour: 1, minute: 5, second: 2)
@@ -76,6 +76,7 @@ class HarptosTests: XCTestCase {
 
         XCTAssert(time2.year == time1.year)
         XCTAssert(time2.festival == .midwinter)
+        XCTAssert(time2.day == 1)
     }
     
     func testNegativeYearHammerToMidwinter() {
@@ -84,6 +85,7 @@ class HarptosTests: XCTestCase {
         
         XCTAssert(time.year == time1.year)
         XCTAssert(time.festival == .midwinter)
+        XCTAssert(time.day == 1)
     }
     
     func testTransitionFromMidsummerToShieldmeetInLeapYears() {
@@ -92,6 +94,7 @@ class HarptosTests: XCTestCase {
         
         XCTAssert(time.year == time1.year)
         XCTAssert(time.festival == .shieldmeet)
+        XCTAssert(time.day == 1)
     }
     
     func testTransitionFromMidsummerToEleasis() {
@@ -100,6 +103,7 @@ class HarptosTests: XCTestCase {
         
         XCTAssert(time.year == time1.year)
         XCTAssert(time.month == 8)
+        XCTAssert(time.day == 1)
     }
 
     func testTransitionFromMidsummerToFlamerule() {
@@ -108,13 +112,16 @@ class HarptosTests: XCTestCase {
         
         XCTAssert(time.year == time1.year)
         XCTAssert(time.month == 7)
+        XCTAssert(time.day == 30)
     }
 
     func testPositiveTransitionToNextYear() {
         let time1 = HarptosCalendar.getTimeFor(year: 533, month: 12, day: 30)
         let time2 = time1.timeByAdding(days: 1)
         
-        XCTAssert(time1.year + 1 == time2.year)
+        XCTAssert(time2.year == time1.year + 1)
+        XCTAssert(time2.day == 1)
+        XCTAssert(time2.month == 1)
     }
 
     func testNegativeDateInLeapYear4() {

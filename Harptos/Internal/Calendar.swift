@@ -26,6 +26,7 @@ class Calendar {
         let leapDaySeconds = Float(year) / 4 * Float(Constants.secondsPerDay)
         let remainingYearSeconds = epoch - (year * Constants.secondsPerYear) - Int(leapDaySeconds)
         var day = Int(remainingYearSeconds / Constants.secondsPerDay)
+        if day == 0 { day = 1} // if we've arrived in a new year, start on day 1
         
         var segment: YearTimeSegment = YearTimeSegment.allCases.first!
 

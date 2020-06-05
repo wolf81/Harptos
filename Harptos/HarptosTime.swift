@@ -96,7 +96,7 @@ extension HarptosTime {
 // MARK: - CustomStringConvertible
 
 extension HarptosTime: CustomStringConvertible {
-    private static let defaultFormatter = HarptosTimeFormatter(monthFormat: "YYYY MM dd - hh:mm:ss", festivalFormat: "YYYY M - hh:mm:ss")
+    private static let defaultFormatter = HarptosTimeFormatter(monthFormat: "dd MM YYYY 'DR' – hh:mm:ss", festivalFormat: "M YYYY 'DR' – hh:mm:ss")
 
     public var description: String {
         return HarptosTime.defaultFormatter.string(from: self)
