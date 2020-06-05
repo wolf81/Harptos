@@ -37,7 +37,7 @@ class Calendar {
             
             if isLeapYear(year) == false && aSegment == .shieldmeet { continue }
             
-            if day > segmentDays {
+            if day >= segmentDays {
                 day -= segmentDays
             } else {
                 break
