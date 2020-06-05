@@ -16,16 +16,20 @@ The library is targetted towards iOS, macOS and tvOS platforms and written in Sw
 
 ## Functionality
 
-My intention is to provide the following functionality:
+The goal of the library is to provide the following functionality:
 
-- Creation of instants with a precision in seconds
+- Allow creation of time objects based on the Calendar of Harptos
 
-- Adding & removing years, days, hours, minutes and seconds to calculate new days
+- The precision of time formats should be in seconds, since a round of play time in AD&D lasts for 6 seconds
 
-- The library should be easy to use
+- Allow manipulation of time objects (adding and removing days, hours, minutes, seconds, etc...)
+
+- Allow formatting of time objects using custom format strings
+
+Finally the library should also be easy to use.
 
 
-## Code Structure
+## Usage
 
 First it's important to understand time in AD&D according to the Harptos calender:
 
@@ -34,28 +38,44 @@ First it's important to understand time in AD&D according to the Harptos calende
 - A month lasts for 30 days
 - Between several months there are festivals that last for a day. 
 - For normal years there are 5 festivals in a year, for leap years a 6th festival day is added
-- (!) The aforementioned festivals are not part of any month
+- The 5 (or 6 in leap years) special festivals that are added every year fall between months
 
-Because of the distinction between months and festivals, the library makes use of a `HarptosInstantProtocol` protocol to describe a moment (an instant) in time. A `HarptosDate` & `HarptosFestival` classes implement this protocol. 
+### Creation of `HarptosTime` objects
 
-`Instants` are created through the `HarptosCalendar` class. `Instants` are immutable, but once an Instant is retrieved it's possible to generate new `Instants` based on the existing one by calling modification functions.
-
-A short example is as follows:
+Use the `HarptosCalendar` to create `HarptosTime` objects based on a date or a festival:
 
 ```
-let date1 = HarptosCalendar.getDateFor(year: 1322, month: 3, day: 5)
-let date2 = date1.instantByAdding(days: 1) as! HarptosDate
-assert((date1.day + 1) == date2.day)
+let date = HarptosCalendar.getTimeFor(year: 1200, month: 1, day: 30, hour: 1, minute: 5, second: 2)
+let festival = HarptosCalendar.getTimeFor(year: 1200, festival: .midwinter) 
 ```
 
-In the above example an immutable object `date1` is created and by calling the `instantByAdding(...)` method we create a new instant with a time that was based on the time of the `date1` object. 
+### Manipulation of `HarptosTime` objects
 
-Please note that since the `instantByAdding(...)` function returns an object conforming to `HarptosInstantProtocol`, one needs to typecast the `Instant` to read property values that are not available in the protocol. A `HarptosDate` contains a property `month`, but this property doesn't exist in `HarptosFestival`. When adding or removing time from an instant we could be dealing with objects of either type.
+In order to manipulate `HarptosTime` objects, use the appropriate methods on the `HarptosTime` objects:
+```
+let time1 = HarptosCalendar.getTimeFor(year: 1200, month: 1, day: 24, hour: 5, minute: 33, second: 5) // 1200 01 24 - 05:33:05
+let time2 = time1.timeByAdding(days: 1) // 1200 01 25 - 05:33:05
+```
 
-For my own purposes I don't believe I'll need to typecast much, so I don't see this as a big issue. The way I imagine how I'll use this library is as follows:
+For going in the past, use negative values, e.g.:
+```
+let time1 = HarptosCalendar.getTimeFor(year: 1200, month: 1, day: 24, hour: 5, minute: 33, second: 5) // 1200 01 24 - 05:33:05
+let time2 = time1.timeByAdding(minutes: -30) // // 1200 01 24 - 05:03:05
+```
 
-- At the start of the game I create a date that is appropriate for my setting.
-- Every time a user plays a turn, some seconds are added.
-- Only when displaying the current date somewhere in the screen, I might need to typecast, so I can show either `21 Hammer 1322 DR 14:05:22` or `Midwinter 1322 23:15:49`, depending on the casted type.
+### Using custom format strings with `HarptosTime` objects
 
-If the conversion is a bit of a hassle, I would probably add some date formatter classes.
+It's possible to provide your own format strings. In order to do so, create a `HarptosTimeFormatter` and provide it with format strings for months and festivals:
+
+```
+let formatter = HarptosTimeFormatter(monthFormat: "dd MMM', 'YYYY 'DR'", festivalFormat: "M', 'Y")
+let date = HarptosCalendar.getTimeFor(year: 1200, month: 1, day: 30, hour: 1, minute: 5, second: 2)
+let dateString = formatter.string(from: date) // 30 Hammer, 1200 DR
+
+let festival = HarptosCalendar.getTimeFor(year: 1322, festival: .moonfeast)
+let festivalString = formatter.string(from: festival) // Moonfeast, The Year of Lurking Death
+```
+
+Format strings exist for hours, minutes, seconds, days, months and years. Festivals share format strings with months. Place text between single quotes to prevent formatting for some part of the format string.
+
+

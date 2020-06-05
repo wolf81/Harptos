@@ -23,6 +23,7 @@ import Foundation
 /// - m: the minute, through 0 - 59
 /// - ss: the second, through 00 - 59
 /// - s: the second, through 0 - 59
+/// Values between single quotes will be ignored
 public class HarptosTimeFormatter {
     
     /// The format string to be used for months

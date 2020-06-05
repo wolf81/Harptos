@@ -20,12 +20,15 @@ class HarptosTests: XCTestCase {
     }
     
     func testDateFormatter() {
-        let formatter = HarptosTimeFormatter(monthFormat: "dd M YYYY 'DR Y mm' YYYY", festivalFormat: "M Y")
-        let time = HarptosCalendar.getTimeFor(year: 1200, month: 1, day: 30, hour: 1, minute: 5, second: 2)
-        let string = formatter.string(from: time)
+        let formatter = HarptosTimeFormatter(monthFormat: "dd MMM', 'YYYY 'DR'", festivalFormat: "M', 'Y")
+        let date = HarptosCalendar.getTimeFor(year: 1200, month: 1, day: 30, hour: 1, minute: 5, second: 2)
+        let dateString = formatter.string(from: date)
         
-        print(time)        
-        print(string)
+        let festival = HarptosCalendar.getTimeFor(year: 1322, festival: .moonfeast)
+        let festivalString = formatter.string(from: festival)
+
+        print(dateString)
+        print(festivalString)
     }
 
     func testFestivalFormatter() {
@@ -69,10 +72,10 @@ class HarptosTests: XCTestCase {
 
     func testPositiveYearHammerToMidwinter() {
         let time1 = HarptosCalendar.getTimeFor(year: 1200, month: 1, day: 30)
-        let time = time1.timeByAdding(days: 1)
-        
-        XCTAssert(time.year == time1.year)
-        XCTAssert(time.festival == .midwinter)
+        let time2 = time1.timeByAdding(days: 1)
+
+        XCTAssert(time2.year == time1.year)
+        XCTAssert(time2.festival == .midwinter)
     }
     
     func testNegativeYearHammerToMidwinter() {
