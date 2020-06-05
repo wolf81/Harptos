@@ -73,8 +73,9 @@ public class HarptosInstantFormatter {
     ///   - formatString: The format string to process
     ///   - instant: The HarptosInstant to use with the format string
     private static func generateTreeFrom(formatString: NSString, applyingInstant instant: HarptosInstant) -> TreeNode? {
-        let regex = try! NSRegularExpression(pattern: "'.*?'")
-        if let match = regex.matches(in: formatString as String, options: [], range: NSRange(location: 0, length: formatString.length)).first {
+        // ignore content between single quotes
+        let excludedTextRegex = try! NSRegularExpression(pattern: "'.*?'")
+        if let match = excludedTextRegex.matches(in: formatString as String, options: [], range: NSRange(location: 0, length: formatString.length)).first {
             let (leftNode, rightNode) = getChildNodesFor(formatString: formatString, applyingInstant: instant, inRange: match.range)
             let value = formatString.substring(with: match.range).replacingOccurrences(of: "'", with: "")
             return TreeNode(value as NSString, leftNode, rightNode)
