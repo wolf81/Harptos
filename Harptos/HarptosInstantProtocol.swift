@@ -71,7 +71,7 @@ public class HarptosInstant: HarptosInstantProtocol {
     public var minute: Int { self.components.minute }
     
     /// The second in the current minute
-    public var second: Int { self.components.second }
+    public var second: Int { self.components.second }        
         
     /// The initializer
     /// - Parameter epoch: An epoch value, for which 0 represents 0 DR
