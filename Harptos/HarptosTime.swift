@@ -8,22 +8,21 @@
 
 import Foundation
 
-/// A HarptosInstant provides the base functionality required to conform to HarptosInstantProtocol
+/// A `HarptosTime` object represents a moment of time in the AD&D universe, based on the Calendar of
+/// Harptos
 public class HarptosTime {
-    lazy var components: InstantComponents = {
+    lazy var components: TimeComponents = {
         return Calendar.getDateComponentsFor(epoch: self.epoch)
     }()
-    
-    internal var segment: InstantSegment { return self.components.segment }
-    
-    /// The epoch
+        
+    /// The epoch value in seconds, where 0 represents the time at 0 Dale Reckoning
     public let epoch: Int
             
     /// The month, will be nil in case of a festival
-    public var month: Int? { self.components.segment.month }
+    public var month: Int? { self.components.month }
     
     /// The festival, will be nil in case of a month
-    public var festival: Festival? { self.components.segment.festival }
+    public var festival: Festival? { self.components.festival }
     
     /// The day
     public var day: Int { self.components.day }
@@ -41,7 +40,7 @@ public class HarptosTime {
     public var second: Int { self.components.second }
         
     /// The initializer
-    /// - Parameter epoch: An epoch value, for which 0 represents 0 DR
+    /// - Parameter epoch: An epoch value in seconds, for which 0 represents the time at 0 Dale Reckoning
     init(epoch: Int) {
         self.epoch = epoch
     }

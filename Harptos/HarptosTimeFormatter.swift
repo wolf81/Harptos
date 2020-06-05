@@ -1,5 +1,5 @@
 //
-//  HarptosInstantFormatter.swift
+//  HarptosTimeFormatter.swift
 //  Harptos
 //
 //  Created by Wolfgang Schreurs on 04/06/2020.
@@ -59,7 +59,7 @@ public class HarptosTimeFormatter {
     /// Return a formatted string for a given `HarptosTime`
     /// - Parameter time: The time to be formatted
     public func string(from time: HarptosTime) -> String {
-        let formatString = time.segment.isMonth ? self.monthFormat : self.festivalFormat
+        let formatString = time.components.segment.isMonth ? self.monthFormat : self.festivalFormat
         return HarptosTimeFormatter.formatTime(time, usingFormatString: formatString)
     }
 
@@ -91,7 +91,7 @@ public class HarptosTimeFormatter {
     /// Process a string, generating a binary tree for which the patterns will already be replaced with the appropriate values
     /// - Parameters:
     ///   - formatString: The format string to process
-    ///   - instant: The HarptosInstant to use with the format string
+    ///   - time: The `HarptosTime` to use with the format string
     private static func generateTreeFrom(formatString: NSString, applyingTime time: HarptosTime) -> TreeNode? {
         // ignore content between single quotes
         let excludedTextRegex = try! NSRegularExpression(pattern: "'.*?'")
@@ -117,7 +117,7 @@ public class HarptosTimeFormatter {
     /// of (5 ... 9), a string length of 14 chars, we'll get a left node for range (0 ... 4) and a
     /// right node for range (10 ... 14)
     ///   - string: The format string to process
-    ///   - instant: The HarptosInstant to apply when formatting nodes
+    ///   - time: The `HarptosTime` to apply when formatting nodes
     ///   - range: A range that acts as divider for the left and right nodes
     private static func getChildNodesFor(formatString: NSString, applyingTime time: HarptosTime, inRange range: NSRange) -> (left: TreeNode?, right: TreeNode?) {
         var prefix: String?
@@ -149,25 +149,27 @@ public class HarptosTimeFormatter {
             
     /// Return the long name for a given segment; for a festival always the festival name, for a
     /// month the most common month name.
-    /// - Parameter instant: The HarptosInstant for which we want to get the segment long name
+    /// - Parameter time: The `HarptosTime` for which we want to get the segment long name
     private static func getLongNameForSegment(in time: HarptosTime) -> String {
-        if time.segment.isMonth {
-            return HarptosCalendar.getNamesFor(month: time.segment.month).first!
+        if time.components.segment.isMonth {
+            return HarptosCalendar.getNamesFor(month: time.components.segment.month).first!
         } else {
-            return HarptosCalendar.getNameFor(festival: time.segment.festival)
+            return HarptosCalendar.getNameFor(festival: time.components.segment.festival)
         }
     }
      
     /// Return the short name for a given segment; for a festival there is no short name, but for
     /// a month this would be the numeric string, i.e.: "1" for Hammer
     /// - Parameters:
-    /// - Parameter instant: The HarptosInstant for which we want to get the segment short name
+    /// - Parameter time: The `HarptosTime` for which we want to get the segment short name
     /// - isZeroPadded: Set to true if wanting to add padding zeroes
     private static func getShortNameForSegment(in time: HarptosTime, isZeroPadded: Bool) -> String {
-        if time.segment.isMonth {
-            return isZeroPadded ? "\(time.segment.month)".padLeft(totalWidth: 2, with: "0") : "\(time.segment.month)"
+        if time.components.segment.isMonth {
+            return (isZeroPadded
+                ? "\(time.components.segment.month)".padLeft(totalWidth: 2, with: "0")
+                : "\(time.components.segment.month)")
         } else {
-            return HarptosCalendar.getNameFor(festival: time.segment.festival)
+            return HarptosCalendar.getNameFor(festival: time.components.segment.festival)
         }
     }
             

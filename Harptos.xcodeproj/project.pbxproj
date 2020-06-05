@@ -16,12 +16,9 @@
 		79330963248AACF9009A1ECE /* HarptosFestival.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79330962248AACF9009A1ECE /* HarptosFestival.swift */; };
 		79330964248AACF9009A1ECE /* HarptosFestival.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79330962248AACF9009A1ECE /* HarptosFestival.swift */; };
 		79330965248AACF9009A1ECE /* HarptosFestival.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79330962248AACF9009A1ECE /* HarptosFestival.swift */; };
-		79330967248AB0D5009A1ECE /* YearSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79330966248AB0D5009A1ECE /* YearSegment.swift */; };
-		79330968248AB0D5009A1ECE /* YearSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79330966248AB0D5009A1ECE /* YearSegment.swift */; };
-		79330969248AB0D5009A1ECE /* YearSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79330966248AB0D5009A1ECE /* YearSegment.swift */; };
-		795A429B2483D6CB00A13C3F /* InstantSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A429A2483D6CB00A13C3F /* InstantSegment.swift */; };
-		795A429C2483D6CB00A13C3F /* InstantSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A429A2483D6CB00A13C3F /* InstantSegment.swift */; };
-		795A429D2483D6CB00A13C3F /* InstantSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A429A2483D6CB00A13C3F /* InstantSegment.swift */; };
+		795A429B2483D6CB00A13C3F /* YearTimeSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A429A2483D6CB00A13C3F /* YearTimeSegment.swift */; };
+		795A429C2483D6CB00A13C3F /* YearTimeSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A429A2483D6CB00A13C3F /* YearTimeSegment.swift */; };
+		795A429D2483D6CB00A13C3F /* YearTimeSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A429A2483D6CB00A13C3F /* YearTimeSegment.swift */; };
 		795A42AF2483F57D00A13C3F /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A42AE2483F57D00A13C3F /* Calendar.swift */; };
 		795A42B02483F57D00A13C3F /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A42AE2483F57D00A13C3F /* Calendar.swift */; };
 		795A42B12483F57D00A13C3F /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A42AE2483F57D00A13C3F /* Calendar.swift */; };
@@ -39,9 +36,9 @@
 		79A8C0042483C8C100346F44 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8C0032483C8C100346F44 /* Constants.swift */; };
 		79A8C0052483C8C100346F44 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8C0032483C8C100346F44 /* Constants.swift */; };
 		79A8C0062483C8C100346F44 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8C0032483C8C100346F44 /* Constants.swift */; };
-		79FDFF7B2485FD4300D09FEA /* InstantComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDFF7A2485FD4300D09FEA /* InstantComponents.swift */; };
-		79FDFF7C2485FD4300D09FEA /* InstantComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDFF7A2485FD4300D09FEA /* InstantComponents.swift */; };
-		79FDFF7D2485FD4300D09FEA /* InstantComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDFF7A2485FD4300D09FEA /* InstantComponents.swift */; };
+		79FDFF7B2485FD4300D09FEA /* TimeComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDFF7A2485FD4300D09FEA /* TimeComponents.swift */; };
+		79FDFF7C2485FD4300D09FEA /* TimeComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDFF7A2485FD4300D09FEA /* TimeComponents.swift */; };
+		79FDFF7D2485FD4300D09FEA /* TimeComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDFF7A2485FD4300D09FEA /* TimeComponents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +55,7 @@
 		7933095A248A3955009A1ECE /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		7933095E248AA561009A1ECE /* HarptosTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarptosTime.swift; sourceTree = "<group>"; };
 		79330962248AACF9009A1ECE /* HarptosFestival.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarptosFestival.swift; sourceTree = "<group>"; };
-		79330966248AB0D5009A1ECE /* YearSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearSegment.swift; sourceTree = "<group>"; };
-		795A429A2483D6CB00A13C3F /* InstantSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantSegment.swift; sourceTree = "<group>"; };
+		795A429A2483D6CB00A13C3F /* YearTimeSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearTimeSegment.swift; sourceTree = "<group>"; };
 		795A42AE2483F57D00A13C3F /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		79A34FE82488A1E200EE7074 /* HarptosTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarptosTimeFormatter.swift; sourceTree = "<group>"; };
 		79A8BFCD2483BFDA00346F44 /* Harptos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Harptos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,7 +72,7 @@
 		79A8BFF92483C0F400346F44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79A8BFFF2483C15A00346F44 /* HarptosCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarptosCalendar.swift; sourceTree = "<group>"; };
 		79A8C0032483C8C100346F44 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		79FDFF7A2485FD4300D09FEA /* InstantComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantComponents.swift; sourceTree = "<group>"; };
+		79FDFF7A2485FD4300D09FEA /* TimeComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeComponents.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,11 +111,10 @@
 		79071CDD248743DF00134149 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				79FDFF7A2485FD4300D09FEA /* InstantComponents.swift */,
+				79FDFF7A2485FD4300D09FEA /* TimeComponents.swift */,
 				79A8C0032483C8C100346F44 /* Constants.swift */,
-				795A429A2483D6CB00A13C3F /* InstantSegment.swift */,
+				795A429A2483D6CB00A13C3F /* YearTimeSegment.swift */,
 				795A42AE2483F57D00A13C3F /* Calendar.swift */,
-				79330966248AB0D5009A1ECE /* YearSegment.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -393,12 +388,11 @@
 				79A8C0002483C15A00346F44 /* HarptosCalendar.swift in Sources */,
 				7933095B248A3955009A1ECE /* StringExtensions.swift in Sources */,
 				79A34FE92488A1E200EE7074 /* HarptosTimeFormatter.swift in Sources */,
-				79FDFF7B2485FD4300D09FEA /* InstantComponents.swift in Sources */,
-				79330967248AB0D5009A1ECE /* YearSegment.swift in Sources */,
+				79FDFF7B2485FD4300D09FEA /* TimeComponents.swift in Sources */,
 				7933095F248AA561009A1ECE /* HarptosTime.swift in Sources */,
 				79A8C0042483C8C100346F44 /* Constants.swift in Sources */,
 				79330963248AACF9009A1ECE /* HarptosFestival.swift in Sources */,
-				795A429B2483D6CB00A13C3F /* InstantSegment.swift in Sources */,
+				795A429B2483D6CB00A13C3F /* YearTimeSegment.swift in Sources */,
 				795A42AF2483F57D00A13C3F /* Calendar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,12 +412,11 @@
 				79A8C0012483C15A00346F44 /* HarptosCalendar.swift in Sources */,
 				7933095C248A3955009A1ECE /* StringExtensions.swift in Sources */,
 				79A34FEA2488A1E200EE7074 /* HarptosTimeFormatter.swift in Sources */,
-				79FDFF7C2485FD4300D09FEA /* InstantComponents.swift in Sources */,
-				79330968248AB0D5009A1ECE /* YearSegment.swift in Sources */,
+				79FDFF7C2485FD4300D09FEA /* TimeComponents.swift in Sources */,
 				79330960248AA561009A1ECE /* HarptosTime.swift in Sources */,
 				79A8C0052483C8C100346F44 /* Constants.swift in Sources */,
 				79330964248AACF9009A1ECE /* HarptosFestival.swift in Sources */,
-				795A429C2483D6CB00A13C3F /* InstantSegment.swift in Sources */,
+				795A429C2483D6CB00A13C3F /* YearTimeSegment.swift in Sources */,
 				795A42B02483F57D00A13C3F /* Calendar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,12 +428,11 @@
 				79A8C0022483C15A00346F44 /* HarptosCalendar.swift in Sources */,
 				7933095D248A3955009A1ECE /* StringExtensions.swift in Sources */,
 				79A34FEB2488A1E200EE7074 /* HarptosTimeFormatter.swift in Sources */,
-				79FDFF7D2485FD4300D09FEA /* InstantComponents.swift in Sources */,
-				79330969248AB0D5009A1ECE /* YearSegment.swift in Sources */,
+				79FDFF7D2485FD4300D09FEA /* TimeComponents.swift in Sources */,
 				79330961248AA561009A1ECE /* HarptosTime.swift in Sources */,
 				79A8C0062483C8C100346F44 /* Constants.swift in Sources */,
 				79330965248AACF9009A1ECE /* HarptosFestival.swift in Sources */,
-				795A429D2483D6CB00A13C3F /* InstantSegment.swift in Sources */,
+				795A429D2483D6CB00A13C3F /* YearTimeSegment.swift in Sources */,
 				795A42B12483F57D00A13C3F /* Calendar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

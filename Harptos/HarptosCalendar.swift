@@ -23,7 +23,7 @@ public final class HarptosCalendar {
         assert((0 ..< 60).contains(minute), "Minutes should be between 0 and 59")
         assert((0 ..< 60).contains(second), "Seconds should be between 0 and 59")
         
-        let segment = InstantSegment.getSegmentIndexFor(month: month)
+        let segment = YearTimeSegment.getSegmentIndexFor(month: month)
         let epoch = Calendar.getEpochFor(year: year, segment: segment, day: day, hour: hour, minute: minute, second: second)
         return HarptosTime(epoch: epoch)
     }
@@ -39,7 +39,7 @@ public final class HarptosCalendar {
 
         if festival == .shieldmeet { assert(Calendar.isLeapYear(year), "Shieldmeet can only occur on leap years") }
         
-        let segment = InstantSegment.getSegmentIndexFor(festival: festival)
+        let segment = YearTimeSegment.getSegmentIndexFor(festival: festival)
         let epoch = Calendar.getEpochFor(year: year, segment: segment, day: 1, hour: hour, minute: minute, second: second)
         return HarptosTime(epoch: epoch)
     }
@@ -64,14 +64,14 @@ extension HarptosCalendar {
     /// Return the names for a month; the first name is the most common name, but can be followed by alternate names
     /// - Parameter month: The month to return the name for
     public static func getNamesFor(month: Int) -> [String] {
-        let segment = InstantSegment(month: month)
+        let segment = YearTimeSegment(month: month)
         return [segment.name] + segment.alternateNames
     }
         
     /// Return the name for a festival
     /// - Parameter festival: The festival to return the name for
     public static func getNameFor(festival: Festival) -> String {
-        let segment = InstantSegment(festival: festival)
+        let segment = YearTimeSegment(festival: festival)
         return segment.name
     }
 }

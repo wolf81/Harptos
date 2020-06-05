@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum InstantSegment: Int, CaseIterable {
+enum YearTimeSegment: Int, CaseIterable {
     case hammer = 1
     case midwinter // festival
     case alturiak
@@ -118,12 +118,12 @@ enum InstantSegment: Int, CaseIterable {
     }
     
     init(month: Int) {
-        let segmentIdx = InstantSegment.getSegmentIndexFor(month: month)
+        let segmentIdx = YearTimeSegment.getSegmentIndexFor(month: month)
         self.init(rawValue: segmentIdx)!
     }
     
     init(festival: Festival) {
-        let segmentIdx = InstantSegment.getSegmentIndexFor(festival: festival)
+        let segmentIdx = YearTimeSegment.getSegmentIndexFor(festival: festival)
         self.init(rawValue: segmentIdx)!
     }
 }

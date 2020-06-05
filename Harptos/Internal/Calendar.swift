@@ -18,7 +18,7 @@ class Calendar {
         )
     }
         
-    static func getDateComponentsFor(epoch: Int) -> InstantComponents {
+    static func getDateComponentsFor(epoch: Int) -> TimeComponents {
         let days = Float(epoch / Constants.secondsPerDay)
         let leapDays = Float(epoch) / Float(Constants.secondsPerYear) / 4
         let year = Int(floor((days - leapDays) / Float(Constants.daysPerYear)))
@@ -27,9 +27,9 @@ class Calendar {
         let remainingYearSeconds = epoch - (year * Constants.secondsPerYear) - Int(leapDaySeconds)
         var day = Int(remainingYearSeconds / Constants.secondsPerDay)
         
-        var segment: InstantSegment = InstantSegment.allCases.first!
+        var segment: YearTimeSegment = YearTimeSegment.allCases.first!
 
-        for aSegment in InstantSegment.allCases {
+        for aSegment in YearTimeSegment.allCases {
             segment = aSegment
 
             let segmentDays = aSegment.isFestival ? 1 : 30
@@ -48,7 +48,7 @@ class Calendar {
         let minute = (remainingSeconds % Constants.secondsPerHour) / 60
         let second = (remainingSeconds % Constants.secondsPerHour) % 60
         
-        return InstantComponents(year: year, segment: segment, day: day, hour: hour, minute: minute, second: second)
+        return TimeComponents(year: year, segment: segment, day: day, hour: hour, minute: minute, second: second)
     }
     
     static func isLeapYear(_ year: Int) -> Bool {
@@ -2368,9 +2368,9 @@ class Calendar {
     private static func getEpochFor(segment: Int, inYear year: Int) -> Int {
         var minutes = 0
         for i in 1 ..< segment {
-            if isLeapYear(year) == false && i == InstantSegment.shieldmeet.rawValue { continue }
+            if isLeapYear(year) == false && i == YearTimeSegment.shieldmeet.rawValue { continue }
             
-            minutes += (InstantSegment(rawValue: i)!.isFestival
+            minutes += (YearTimeSegment(rawValue: i)!.isFestival
                 ? Constants.secondsPerDay * 1
                 : Constants.secondsPerDay * 30
             )            
