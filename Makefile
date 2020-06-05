@@ -2,11 +2,11 @@
 
 test: 
 	# test project	
-	set -o pipefail && xcodebuild test -scheme "Harptos macOS" -destination "platform=macOS,arch=x86_64" OBJROOT="$(PWD)/build" -sdk "macosx10.15" | xcpretty
+	set -o pipefail && xcodebuild test -scheme "Harptos macOS" -destination "platform=macOS,arch=x86_64" OBJROOT="$(PWD)/build" -sdk "macosx10.14" | xcpretty
 
 build:
 	# build project
-	set -o pipefail && xcodebuild build -scheme "Harptos macOS" -destination "platform=macOS,arch=x86_64" OBJROOT="$(PWD)/build" -sdk "macosx10.15" | xcpretty
+	set -o pipefail && xcodebuild build -scheme "Harptos macOS" -destination "platform=macOS,arch=x86_64" OBJROOT="$(PWD)/build" -sdk "macosx10.14" | xcpretty
 
 clean:
 	# clean project
