@@ -20,16 +20,17 @@ class HarptosTests: XCTestCase {
     }
     
     func testDateFormatter() {
-        let formatter = HarptosInstantFormatter(dateFormat: "dd M yyyy", festivalFormat: "f Y")
+        let formatter = HarptosInstantFormatter(dateFormat: "dd M YYYY", festivalFormat: "M Y")
         let date1 = HarptosCalendar.getDateFor(year: 1200, month: 1, day: 30, hour: 1, minute: 5, second: 2)
         let string = formatter.string(from: date1)
         print(string)
     }
 
     func testFestivalFormatter() {
-        let formatter = HarptosInstantFormatter(dateFormat: "dd M yyyy", festivalFormat: "f Y")
-        let date1 = HarptosCalendar.getDateFor(year: 1200, month: 1, day: 30, hour: 1, minute: 5, second: 2)
+        let formatter = HarptosInstantFormatter(dateFormat: "dd M YYYY", festivalFormat: "M, Y")
+        let date1 = HarptosCalendar.getFestivalFor(year: 1244, festival: .greengrass)
         let string = formatter.string(from: date1)
+        
         print(string)
     }
 

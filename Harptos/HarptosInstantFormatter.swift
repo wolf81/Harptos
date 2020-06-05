@@ -13,14 +13,19 @@ public class HarptosInstantFormatter {
     let festivalFormat: String
     
     private static var formatters: [PatternFormatter] = [
-        PatternFormatter(pattern: "yyyy", formatter: { "\($0.year)" }),
+        PatternFormatter(pattern: "YYYY", formatter: { "\($0.year)" }),
         PatternFormatter(pattern: "Y", formatter: { HarptosCalendar.getNameFor(year: $0.year) ?? "\($0.year)" }),
         PatternFormatter(pattern: "dd", formatter: { "\(($0 as! HarptosDate).day)".padLeft(totalWidth: 2, with: "0") }),
         PatternFormatter(pattern: "d", formatter: { "\(($0 as! HarptosDate).day)" }),
-        PatternFormatter(pattern: "M", formatter: { HarptosCalendar.getNamesFor(month: ($0 as! HarptosDate).month).first! }),
-        PatternFormatter(pattern: "mm", formatter: { "\(($0 as! HarptosDate).month)".padLeft(totalWidth: 2, with: "0") }),
-        PatternFormatter(pattern: "m", formatter: { "\(($0 as! HarptosDate).month)" }),
-        PatternFormatter(pattern: "F", formatter: { HarptosCalendar.getNameFor(festival: ($0 as! HarptosFestival).festival) }),
+        PatternFormatter(pattern: "MMM", formatter: { getLongNameForSegment(in: $0) }),
+        PatternFormatter(pattern: "MM", formatter: { getShortNameForSegment(in: $0, isZeroPadded: true) }),
+        PatternFormatter(pattern: "M", formatter: { getShortNameForSegment(in: $0, isZeroPadded: false) }),
+        PatternFormatter(pattern: "hh", formatter: { "\($0.hour)".padLeft(totalWidth: 2, with: "0") }),
+        PatternFormatter(pattern: "h", formatter: { "\($0.hour)" }),
+        PatternFormatter(pattern: "mm", formatter: { "\($0.minute)".padLeft(totalWidth: 2, with: "0") }),
+        PatternFormatter(pattern: "m", formatter: { "\($0.minute)" }),
+        PatternFormatter(pattern: "ss", formatter: { "\($0.second)".padLeft(totalWidth: 2, with: "0") }),
+        PatternFormatter(pattern: "s", formatter: { "\($0.second)" }),
     ]
         
     public init(dateFormat: String, festivalFormat: String) {
@@ -142,6 +147,26 @@ public class HarptosInstantFormatter {
         return TreeNode(string, nil, nil)
     }
         
+    static func getLongNameForSegment(in instant: HarptosInstantProtocol) -> String {
+        switch instant {
+        case let date as HarptosDate:
+            return HarptosCalendar.getNamesFor(month: date.month).first!
+        case let festival as HarptosFestival:
+            return HarptosCalendar.getNameFor(festival: festival.festival)
+        default: fatalError()
+        }
+    }
+    
+    static func getShortNameForSegment(in instant: HarptosInstant, isZeroPadded: Bool) -> String {
+        switch instant {
+        case let date as HarptosDate:
+            return isZeroPadded ? "\(date.month)".padLeft(totalWidth: 2, with: "0") : "\(date.month)"
+        case let festival as HarptosFestival:
+            return HarptosCalendar.getNameFor(festival: festival.festival)
+        default: fatalError()
+        }
+    }
+    
     // MARK: - Private
     
     private class PatternFormatter {
