@@ -32,7 +32,7 @@ public final class HarptosCalendar {
     /// - Parameters:
     ///   - year: The year, it's recommended to limit the range from -700 DR to 1600 DR
     ///   - festival: A festival
-    public static func getTimeFor(year: Int, festival: Festival, hour: Int = 0, minute: Int = 0, second: Int = 0) -> HarptosTime {
+    public static func getTimeFor(year: Int, festival: HarptosFestival, hour: Int = 0, minute: Int = 0, second: Int = 0) -> HarptosTime {
         assert((0 ..< 24).contains(hour), "Hours should be between 0 and 23")
         assert((0 ..< 60).contains(minute), "Minutes should be between 0 and 59")
         assert((0 ..< 60).contains(second), "Seconds should be between 0 and 59")
@@ -70,7 +70,7 @@ extension HarptosCalendar {
         
     /// Return the name for a festival
     /// - Parameter festival: The festival to return the name for
-    public static func getNameFor(festival: Festival) -> String {
+    public static func getNameFor(festival: HarptosFestival) -> String {
         let segment = YearTimeSegment(festival: festival)
         return segment.name
     }

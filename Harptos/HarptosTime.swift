@@ -22,7 +22,7 @@ public class HarptosTime {
     public var month: Int? { self.components.month }
     
     /// The festival, will be nil in case of a month
-    public var festival: Festival? { self.components.festival }
+    public var festival: HarptosFestival? { self.components.festival }
     
     /// The day
     public var day: Int { self.components.day }

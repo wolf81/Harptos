@@ -10,12 +10,17 @@ import Foundation
 
 struct TimeComponents {
     var year: Int
-    var segment: YearTimeSegment
-    var day: Int
-    var hour: Int
-    var minute: Int
-    var second: Int
     
+    /// A segment either be a month or festival
+    var segment: YearTimeSegment
     var month: Int? { self.segment.month }
-    var festival: Festival { self.segment.festival }    
+    var festival: HarptosFestival { self.segment.festival }
+
+    var day: Int
+    
+    var hour: Int
+    
+    var minute: Int
+    
+    var second: Int
 }

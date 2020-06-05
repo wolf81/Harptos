@@ -36,7 +36,7 @@ enum YearTimeSegment: Int, CaseIterable {
         return self.isFestival == false
     }
 
-    static func getSegmentIndexFor(festival: Festival) -> Int {
+    static func getSegmentIndexFor(festival: HarptosFestival) -> Int {
         switch festival {
         case .midwinter: return 2
         case .greengrass: return 6
@@ -65,7 +65,7 @@ enum YearTimeSegment: Int, CaseIterable {
         }
     }
     
-    public var festival: Festival {
+    public var festival: HarptosFestival {
         switch self.rawValue {
         case 2: return .midwinter
         case 6: return .greengrass
@@ -122,7 +122,7 @@ enum YearTimeSegment: Int, CaseIterable {
         self.init(rawValue: segmentIdx)!
     }
     
-    init(festival: Festival) {
+    init(festival: HarptosFestival) {
         let segmentIdx = YearTimeSegment.getSegmentIndexFor(festival: festival)
         self.init(rawValue: segmentIdx)!
     }
