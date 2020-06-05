@@ -11,7 +11,7 @@ The goal of this library is to provide basic calendar functionality. I plan to u
 
 ## Requirements
 
-The library is targetted towards iOS, macOS and tvOS platforms and written in Swift. The library will be distributed using Carthage.
+The library is targetted towards iOS, macOS and tvOS platforms and written in Swift. The library is available using Carthage.
 
 
 ## Functionality
