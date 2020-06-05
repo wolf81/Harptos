@@ -1,0 +1,14 @@
+language: swift
+osx_image: xcode10.2
+xcode_destination: platform=macOS
+xcode_workspace: Harptos.xcworkspace
+xcode_scheme: "Harptos macOS"
+install:
+  # - gem install jazzy
+script:
+  - make build
+  - make test
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -J 'Harptos'
+  # - make docs
+  # - bash ${TRAVIS_BUILD_DIR}/scripts/deploy_docs.sh ${TRAVIS_BUILD_DIR}/docs
