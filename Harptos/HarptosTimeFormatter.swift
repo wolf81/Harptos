@@ -8,15 +8,34 @@
 
 import Foundation
 
-public class HarptosInstantFormatter {
-    let dateFormat: String
+/// Use the `HarptosTimeFormatter` to format instances of `HarptosTime`, the following patterns can
+/// be used:
+/// - YYYY: the year, e.g.: 909
+/// - Y: the long name of the year, e.g.: "The Year of the Ogre" for 909 DR
+/// - M: the month number, through 1 - 12
+/// - MM: the month number, through 01 - 12
+/// - MMM: the full of the month / festival, e.g.: Tarsakh for the 4th Month or Midwinter for the festival the day after Hammer 30
+/// - dd: the day of the month, through 01 - 30
+/// - d: the day of the month, though 1 - 30
+/// - hh: the hour, through 00 - 23
+/// - h: the hour, through 0 - 23
+/// - mm: the minute, through 00 - 59
+/// - m: the minute, through 0 - 59
+/// - ss: the second, through 00 - 59
+/// - s: the second, through 0 - 59
+public class HarptosTimeFormatter {
+    
+    /// The format string to be used for months
+    let monthFormat: String
+    
+    /// The format string to be used for festivals
     let festivalFormat: String
     
     private static var formatters: [PatternFormatter] = [
         PatternFormatter(pattern: "YYYY", formatter: { "\($0.year)" }),
         PatternFormatter(pattern: "Y", formatter: { HarptosCalendar.getNameFor(year: $0.year) ?? "\($0.year)" }),
-        PatternFormatter(pattern: "dd", formatter: { "\(($0 as! HarptosDate).day)".padLeft(totalWidth: 2, with: "0") }),
-        PatternFormatter(pattern: "d", formatter: { "\(($0 as! HarptosDate).day)" }),
+        PatternFormatter(pattern: "dd", formatter: { "\($0.day)".padLeft(totalWidth: 2, with: "0") }),
+        PatternFormatter(pattern: "d", formatter: { "\($0.day)" }),
         PatternFormatter(pattern: "MMM", formatter: { getLongNameForSegment(in: $0) }),
         PatternFormatter(pattern: "MM", formatter: { getShortNameForSegment(in: $0, isZeroPadded: true) }),
         PatternFormatter(pattern: "M", formatter: { getShortNameForSegment(in: $0, isZeroPadded: false) }),
@@ -27,31 +46,32 @@ public class HarptosInstantFormatter {
         PatternFormatter(pattern: "ss", formatter: { "\($0.second)".padLeft(totalWidth: 2, with: "0") }),
         PatternFormatter(pattern: "s", formatter: { "\($0.second)" }),
     ]
-        
-    public init(dateFormat: String, festivalFormat: String) {
-        self.dateFormat = dateFormat
+            
+    /// The constructor
+    /// - Parameters:
+    ///   - monthFormat: A format string for months
+    ///   - festivalFormat: A format string for festivals
+    public init(monthFormat: String, festivalFormat: String) {
+        self.monthFormat = monthFormat
         self.festivalFormat = festivalFormat
     }
-    
-    public func string(from instant: HarptosInstant) -> String {
-        var formatString = ""
         
-        switch instant {
-        case _ as HarptosDate: formatString = self.dateFormat
-        case _ as HarptosFestival: formatString = self.festivalFormat
-        default: fatalError()
-        }
-        
-        return HarptosInstantFormatter.formatInstant(instant, formatString: formatString)
+    /// Return a formatted string for a given `HarptosTime`
+    /// - Parameter time: The time to be formatted
+    public func string(from time: HarptosTime) -> String {
+        let formatString = time.segment.isMonth ? self.monthFormat : self.festivalFormat
+        return HarptosTimeFormatter.formatTime(time, usingFormatString: formatString)
     }
-    
+
     // MARK: - Private
     
-    private static func formatInstant(_ instant: HarptosInstant, formatString string: String) -> String {
-        guard let tree = generateTreeFrom(formatString: string as NSString, applyingInstant: instant) else { return "" }
+    private static func formatTime(_ time: HarptosTime, usingFormatString string: String) -> String {
+        guard let tree = generateTreeFrom(formatString: string as NSString, applyingTime: time) else { return "" }
         return generateStringFrom(node: tree)
     }
     
+    /// Generate a string from the tree by combining string values in child nodes with the string value in the parent node
+    /// - Parameter node: A node in the tree
     private static func generateStringFrom(node: TreeNode) -> String {
         var result: String = node.value as String
         
@@ -72,11 +92,11 @@ public class HarptosInstantFormatter {
     /// - Parameters:
     ///   - formatString: The format string to process
     ///   - instant: The HarptosInstant to use with the format string
-    private static func generateTreeFrom(formatString: NSString, applyingInstant instant: HarptosInstant) -> TreeNode? {
+    private static func generateTreeFrom(formatString: NSString, applyingTime time: HarptosTime) -> TreeNode? {
         // ignore content between single quotes
         let excludedTextRegex = try! NSRegularExpression(pattern: "'.*?'")
         if let match = excludedTextRegex.matches(in: formatString as String, options: [], range: NSRange(location: 0, length: formatString.length)).first {
-            let (leftNode, rightNode) = getChildNodesFor(formatString: formatString, applyingInstant: instant, inRange: match.range)
+            let (leftNode, rightNode) = getChildNodesFor(formatString: formatString, applyingTime: time, inRange: match.range)
             let value = formatString.substring(with: match.range).replacingOccurrences(of: "'", with: "")
             return TreeNode(value as NSString, leftNode, rightNode)
         } else {
@@ -84,8 +104,8 @@ public class HarptosInstantFormatter {
                 let range = formatString.range(of: formatter.pattern)
                 guard range.location != NSNotFound else { continue }
 
-                let (leftNode, rightNode) = getChildNodesFor(formatString: formatString, applyingInstant: instant, inRange: range)
-                let value = formatter.apply(instant: instant)
+                let (leftNode, rightNode) = getChildNodesFor(formatString: formatString, applyingTime: time, inRange: range)
+                let value = formatter.apply(time: time)
                 return TreeNode(value as NSString, leftNode, rightNode)
             }
         }
@@ -99,7 +119,7 @@ public class HarptosInstantFormatter {
     ///   - string: The format string to process
     ///   - instant: The HarptosInstant to apply when formatting nodes
     ///   - range: A range that acts as divider for the left and right nodes
-    private static func getChildNodesFor(formatString: NSString, applyingInstant instant: HarptosInstant, inRange range: NSRange) -> (left: TreeNode?, right: TreeNode?) {
+    private static func getChildNodesFor(formatString: NSString, applyingTime time: HarptosTime, inRange range: NSRange) -> (left: TreeNode?, right: TreeNode?) {
         var prefix: String?
         var suffix: String?
         
@@ -116,12 +136,12 @@ public class HarptosInstantFormatter {
         
         var leftNode: TreeNode?
         if prefix != nil {
-            leftNode = generateTreeFrom(formatString: prefix! as NSString, applyingInstant: instant)
+            leftNode = generateTreeFrom(formatString: prefix! as NSString, applyingTime: time)
         }
 
         var rightNode: TreeNode?
         if suffix != nil {
-            rightNode = generateTreeFrom(formatString: suffix! as NSString, applyingInstant: instant)
+            rightNode = generateTreeFrom(formatString: suffix! as NSString, applyingTime: time)
         }
         
         return (leftNode, rightNode)
@@ -130,13 +150,11 @@ public class HarptosInstantFormatter {
     /// Return the long name for a given segment; for a festival always the festival name, for a
     /// month the most common month name.
     /// - Parameter instant: The HarptosInstant for which we want to get the segment long name
-    private static func getLongNameForSegment(in instant: HarptosInstantProtocol) -> String {
-        switch instant {
-        case let date as HarptosDate:
-            return HarptosCalendar.getNamesFor(month: date.month).first!
-        case let festival as HarptosFestival:
-            return HarptosCalendar.getNameFor(festival: festival.festival)
-        default: fatalError()
+    private static func getLongNameForSegment(in time: HarptosTime) -> String {
+        if time.segment.isMonth {
+            return HarptosCalendar.getNamesFor(month: time.segment.month).first!
+        } else {
+            return HarptosCalendar.getNameFor(festival: time.segment.festival)
         }
     }
      
@@ -145,30 +163,31 @@ public class HarptosInstantFormatter {
     /// - Parameters:
     /// - Parameter instant: The HarptosInstant for which we want to get the segment short name
     /// - isZeroPadded: Set to true if wanting to add padding zeroes
-    private static func getShortNameForSegment(in instant: HarptosInstant, isZeroPadded: Bool) -> String {
-        switch instant {
-        case let date as HarptosDate:
-            return isZeroPadded ? "\(date.month)".padLeft(totalWidth: 2, with: "0") : "\(date.month)"
-        case let festival as HarptosFestival:
-            return HarptosCalendar.getNameFor(festival: festival.festival)
-        default: fatalError()
+    private static func getShortNameForSegment(in time: HarptosTime, isZeroPadded: Bool) -> String {
+        if time.segment.isMonth {
+            return isZeroPadded ? "\(time.segment.month)".padLeft(totalWidth: 2, with: "0") : "\(time.segment.month)"
+        } else {
+            return HarptosCalendar.getNameFor(festival: time.segment.festival)
         }
     }
-        
+            
+    /// A class that combines a pattern with a formatting function, the formatting function can be
+    /// executed at some point by calling `apply(time: ...)`
     private class PatternFormatter {
         let pattern: String
-        let formatter: (HarptosInstant) -> String
+        let formatter: (HarptosTime) -> String
         
-        init(pattern: String, formatter: @escaping (HarptosInstant) -> String) {
+        init(pattern: String, formatter: @escaping (HarptosTime) -> String) {
             self.pattern = pattern
             self.formatter = formatter
         }
         
-        func apply(instant: HarptosInstant) -> String {
-            return self.formatter(instant)
+        func apply(time: HarptosTime) -> String {
+            return self.formatter(time)
         }
     }
-    
+        
+    /// A binary tree node, used for formatting the time objects
     private class TreeNode {
         var value: NSString
         var leftChild: TreeNode?

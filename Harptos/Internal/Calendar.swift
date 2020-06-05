@@ -18,6 +18,43 @@ class Calendar {
         )
     }
         
+    static func getDateComponentsFor(epoch: Int) -> InstantComponents {
+        let days = Float(epoch / Constants.secondsPerDay)
+        let leapDays = Float(epoch) / Float(Constants.secondsPerYear) / 4
+        let year = Int(floor((days - leapDays) / Float(Constants.daysPerYear)))
+
+        let leapDaySeconds = Float(year) / 4 * Float(Constants.secondsPerDay)
+        let remainingYearSeconds = epoch - (year * Constants.secondsPerYear) - Int(leapDaySeconds)
+        var day = Int(remainingYearSeconds / Constants.secondsPerDay)
+        
+        var segment: InstantSegment = InstantSegment.allCases.first!
+
+        for aSegment in InstantSegment.allCases {
+            segment = aSegment
+
+            let segmentDays = aSegment.isFestival ? 1 : 30
+            
+            if isLeapYear(year) == false && aSegment == .shieldmeet { continue }
+            
+            if day > segmentDays {
+                day -= segmentDays
+            } else {
+                break
+            }
+        }
+        
+        let remainingSeconds = remainingYearSeconds % Constants.secondsPerDay
+        let hour = remainingSeconds / Constants.secondsPerHour
+        let minute = (remainingSeconds % Constants.secondsPerHour) / 60
+        let second = (remainingSeconds % Constants.secondsPerHour) % 60
+        
+        return InstantComponents(year: year, segment: segment, day: day, hour: hour, minute: minute, second: second)
+    }
+    
+    static func isLeapYear(_ year: Int) -> Bool {
+        return year % 4 == 0
+    }
+
     static func getNameFor(year: Int) -> String? {
         let yearInfo: [Int: String] = [
          -700: "The Year of Twelve Gods",
@@ -2320,39 +2357,6 @@ class Calendar {
         ]
         return yearInfo[year]
     }
-
-    static func getDateComponentsFor(epoch: Int) -> InstantComponents {
-        let days = Float(epoch / Constants.secondsPerDay)
-        let leapDays = Float(epoch) / Float(Constants.secondsPerYear) / 4
-        let year = Int(floor((days - leapDays) / Float(Constants.daysPerYear)))
-
-        let leapDaySeconds = Float(year) / 4 * Float(Constants.secondsPerDay)
-        let remainingYearSeconds = epoch - (year * Constants.secondsPerYear) - Int(leapDaySeconds)
-        var day = Int(remainingYearSeconds / Constants.secondsPerDay)
-        
-        var segment: InstantSegment = InstantSegment.allCases.first!
-
-        for aSegment in InstantSegment.allCases {
-            segment = aSegment
-
-            let segmentDays = aSegment.isFestival ? 1 : 30
-            
-            if isLeapYear(year) == false && aSegment == .shieldmeet { continue }
-            
-            if day > segmentDays {
-                day -= segmentDays
-            } else {
-                break
-            }
-        }
-        
-        let remainingSeconds = remainingYearSeconds % Constants.secondsPerDay
-        let hour = remainingSeconds / Constants.secondsPerHour
-        let minute = (remainingSeconds % Constants.secondsPerHour) / 60
-        let second = (remainingSeconds % Constants.secondsPerHour) % 60
-        
-        return InstantComponents(year: year, segment: segment, day: day, hour: hour, minute: minute, second: second)
-    }
     
     // MARK: - Private
         
@@ -2380,9 +2384,5 @@ class Calendar {
     
     private static func getEpochFor(hour: Int, minute: Int, second: Int) -> Int {
         return hour * Constants.secondsPerHour + minute * Constants.secondsPerMinute + second
-    }
-    
-    private static func isLeapYear(_ year: Int) -> Bool {
-        return year % 4 == 0
     }
 }
