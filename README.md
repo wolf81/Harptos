@@ -1,4 +1,4 @@
-![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/wolf81/Harptos.svg) [![Build Status](https://travis-ci.org/wolf81/Harptos.svg?branch=master)](https://travis-ci.org/wolf81/Harptos) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ![Supported platforms](https://img.shields.io/static/v1.svg?label=platform&message=macOS%20|%20tvOS%20|%20iOS&color=lightgrey) [![Codecov](https://img.shields.io/codecov/c/github/wolf81/Harptos.svg)](https://codecov.io/gh/wolf81/Harptos)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/wolf81/Harptos.svg) [![Build Status](https://travis-ci.org/wolf81/Harptos.svg?branch=master)](https://travis-ci.org/wolf81/Harptos) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ![Supported platforms](https://img.shields.io/static/v1.svg?label=platform&message=macOS%20|%20tvOS%20|%20iOS&color=lightgrey) [![docs](https://wolf81.github.io/HarptosDocs/badge.svg)](https://wolf81.github.io/HarptosDocs/) [![Codecov](https://img.shields.io/codecov/c/github/wolf81/Harptos.svg)](https://codecov.io/gh/wolf81/Harptos)
 
 # Harptos
 
@@ -81,3 +81,6 @@ let festivalString = formatter.string(from: festival) // Moonfeast, The Year of 
 Format strings exist for hours, minutes, seconds, days, months and years. Festivals share format strings with months. Place text between single quotes to prevent formatting for some part of the format string.
 
 
+## API documentation
+
+For the API docs, please [check out the HarptosDocs website](https://wolf81.github.io/HarptosDocs/).
