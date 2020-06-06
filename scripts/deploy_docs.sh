@@ -11,8 +11,8 @@ if [ "${TRAVIS_BRANCH}" == "master" ]; then
 	git config user.email "travis@travis-ci.org"
 	git add .
 	git commit --message "Auto deploy from Travis CI build ${TRAVIS_BUILD_NUMBER}"
-	git remote add deploy "https://${GH_TOKEN}@github.com/wolf81/HarptosDocs.git" >/dev/null 2>&1
-	git push --force deploy master >/dev/null 2>&1
+	git remote add deploy "https://${GH_TOKEN}@github.com/wolf81/HarptosDocs.git" #>/dev/null 2>&1
+	git push --force deploy master #>/dev/null 2>&1
 else
 	echo "no docs will be deployed, not on master branch"
 fi
