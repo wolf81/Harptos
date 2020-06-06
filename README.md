@@ -4,7 +4,7 @@
 
 A small library for handling AD&D dates & times with regards to the Calendar of Harptos as displayed here:
 
-![](calendar-of-harptos.jpg?raw=true)
+![](https://raw.githubusercontent.com/wolf81/Harptos/master/calendar-of-harptos.jpg)
 
 The goal of this library is to provide basic calendar functionality. I plan to use this library in a game I work on, but I believe others might be able to find a use for it as well.
 
