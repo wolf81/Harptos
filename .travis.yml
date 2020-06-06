@@ -2,13 +2,16 @@ language: swift
 osx_image: xcode11.5
 xcode_destination: platform=macOS
 xcode_workspace: Harptos.xcworkspace
-xcode_scheme: "Harptos macOS"
+xcode_scheme: Harptos macOS
 install:
-  - gem install jazzy
+- gem install jazzy
 script:
-  - make build
-  - make test
+- make build
+- make test
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -J 'Harptos'
-  - make docs
-  - bash ${TRAVIS_BUILD_DIR}/scripts/deploy_docs.sh ${TRAVIS_BUILD_DIR}/docs
+- bash <(curl -s https://codecov.io/bash) -J 'Harptos'
+- make docs
+- bash ${TRAVIS_BUILD_DIR}/scripts/deploy_docs.sh ${TRAVIS_BUILD_DIR}/docs
+env:
+  global:
+    secure: gwdg09o2GsQcaqlMaMThK38b0J6rBeI2S9y1n5WnErYRSsvUjrKCc4m2+BMlWqYb6KvV9X7q5fVOVNFT3meIw48eqRBkFUlrtIDv39QJ/s51n7qhWTWkX02QgdZblRWoXPo12xNYeqtZwEBbfNgLak5oXwClWiXDqwL5pk5OG+NSTnyLDrkBXWhXRporxWD6ltNUsQXXoCG6sq2VhG7ecBs2MmIN3qJPrtIx/ytPPOyGTegCwFD/TmjpyZGLE+cUXgsyOIuw+MQAIAgc/5NMmbWpowEs6ZPgi+IO/Gb/jNC8lFde6J/1qFX1CLztnyZrqxptwjNLxEh4AXe2j0HrpUO7fYo6V0YqpP6O9yis/q8zpWWuVogi4nxY21PhQzkBo7XSAQqYOZk992rTmJgCdk/RepFS/mPcmCEsaNptBqco7RVboacEU+gaBIBNELbzxMAIGFqhULmaWc/R/Z0SbFOxqKUm2Pi1hnZUFWsIApfEIDqhRneYL6FE3vmNSAzJxggQCgCHtYGt70Xr1XQJMCr/ZMFVoBvV3g4279QvoiiwbUG2EghUvuri9CqhsWEknxvvm73FtOTSs5mHM8qEP2FoNxifVbhQye6Q/F7YrFXlskf1jC4gYoeZa+0bKg0XsS8VRWbgVSFGVcsDAnre5mFLKs6iStVJZOVNJIGJlCE=
